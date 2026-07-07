@@ -27,6 +27,7 @@ Full policy: **`docs/AGENT-ROUTING.md`**. Summary — route work to the right mo
 All work on **`augova-astro-rebuild`**. **Never touch, edit, commit to, overwrite, or push `main`.** Before implementation: check branch → switch to `augova-astro-rebuild` if safe → create if missing → stop on unsafe uncommitted changes → no push without explicit approval.
 
 ## Workflow
+- **Before starting each milestone, give the user a short summary of exactly what will be built in it, then wait for approval before writing code.** Non-negotiable gate.
 - Do the **urgent removals** (fake testimonials/logos, pricing page) before building anything else.
 - Then follow the spec's build order (§0) and launch checklist (§13). Checkpoint at each milestone.
 - Copy is **final** in spec §6–§8 — don't invent it. `[[PLACEHOLDER]]` items stay until real assets land; `[[DECISION]]` items use the spec's default.

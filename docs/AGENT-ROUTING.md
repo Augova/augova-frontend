@@ -49,6 +49,7 @@ Haiku should **not** own complex architecture, creative UX decisions, or tricky 
 
 ## Required workflow (per milestone)
 
+0. **Pre-milestone summary (always).** Before any code is written for a milestone, give the user a short, concrete summary of exactly what will be built in it, and wait for approval. This gate applies to every milestone.
 1. **Needs creative UX/design planning?** Start with **Fable** (`creative-planner`). Fable creates/updates the plan, then **stops for approval**.
 2. **Needs technical reasoning?** Use **Opus**. Opus reviews spec, architecture, risks, and acceptance criteria, and defines the implementation tasks — then delegates coding to Sonnet/Haiku.
 3. **Actual code writing:** Use **Sonnet** (`coder`) as primary; **Haiku** (`helper`) for small/mechanical edits. Do **not** use Fable as the main coding agent. Do **not** use Opus for bulk implementation unless explicitly approved.

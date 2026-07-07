@@ -6,6 +6,19 @@
 
 ---
 
+## Approved decisions (locked — 2026-07-07)
+
+The user reviewed this plan and approved the creative direction (§1–§7) with the following locked choices and directives. These override the recommendations/alternatives below where they differ.
+
+1. **Creative direction (§1–§7): approved.**
+2. **Pre-milestone summaries (standing rule):** before each milestone, the user gets a short summary of exactly what will be built, and approves before code is written. (Encoded in `CLAUDE.md` and `docs/AGENT-ROUTING.md`.)
+3. **Hero headline (§8A):** default — *"Never miss another call. Never lose another customer."*
+4. **Hero visual (§4, §8B): PARKED.** The 3D/WebGL hero object (MapLibre map vs. ASCII shape vs. something else) is undecided; **do not invest time in it yet.** Build a simple, on-system static hero placeholder; defer the WebGL `HeroMap` milestone until the user decides what the hero should be. The static-hero-first and reduced-motion rules still hold; the *specific concept* is open.
+5. **Multilingual moment (§7.7, §8C):** build the quiet static four-script block now; prototype the bold animated variant later behind a toggle.
+6. **`--signal` green pip (§4, §5): NOT USED anywhere for now.** The site stays **fully monochrome** — no accent element at all. The `--signal` token may exist in CSS but must not be applied by any component. Build guard: **no `#22C55E` / `--signal` usage anywhere** (stricter than the spec's one-use rule).
+
+---
+
 ## 1. Creative positioning & voice — the emotional throughline
 
 **The visitor we are designing for:** a small-business owner in Richmond Hill or Vaughan who answers their own phone from a job site, a chair-side, or a front counter. They are not anti-AI; they are anti-*being-burned*. They've seen chatbots embarrass businesses. They've been pitched software that became their second job. Their skepticism is earned and rational, and the site must treat it as such — never argue them out of it, never dazzle them past it. **Earn it down.**
