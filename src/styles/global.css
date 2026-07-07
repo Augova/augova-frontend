@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Augova — global design tokens (spec §3)
+   Source of truth for the whole visual system. No hard-coded hex anywhere
+   in markup or components — only here. Tailwind utilities (see
+   tailwind.config.mjs) reference these same custom properties via var(),
+   so there is exactly one place color/type/shape values are ever written.
+   ========================================================================== */
+
+/* source(none): disable Tailwind v4's automatic project-wide content
+   heuristic, which would otherwise also scan the legacy salvage .html
+   files at the repo root (they use old Tailwind-CDN utility classes that
+   have nothing to do with this design system) and bloat the generated
+   CSS with unrelated utilities. Only src/ is a real Tailwind source. */
+@import "tailwindcss" source(none);
+@source "../";
+
+/* Tailwind v4 reads its JS config for anything not expressed as a native
+   @theme value (fontSize/letterSpacing/lineHeight combos, radii, motion).
+   tailwind.config.mjs itself only stores var(--token) references back into
+   these custom properties — never literal hex/px — so this file remains
+   the single source of truth. */
+@config "../../tailwind.config.mjs";
+
+:root {
+  /* ---- Color: monochrome system + one reserved (unused) signal ---- */
+  --black: #000000;
+  --ink: #0A0A0A; /* near-black: dark section bg + primary text on light */
+  --paper: #F7F7F5; /* off-white section bg */
+  --white: #FFFFFF;
+  --gray-900: #1A1A1A;
+  --gray-700: #424242;
+  --gray-500: #929292;
+  --gray-300: #BCBCBC;
+  --gray-100: #E8E8E6;
+  /* DEFINED BUT MUST NOT BE USED by any component yet — site is fully
+     monochrome per the approved creative plan. Reserved for exactly one
+     scoped live-status element in a later milestone (spec §4/§5). */
+  --signal: #22C55E;
+
+  /* ---- Typography ---- */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace; /* eyebrows/labels only */
+
+  /* Type scale — desktop / tablet / mobile (px), per spec §3.
+     Encoded as tokens only; no components consume these yet. */
+  --text-hero-desktop: 72px;
+  --text-hero-tablet: 52px;
+  --text-hero-mobile: 38px;
+  --text-hero-weight: 600;
+  --text-hero-line-height: 1.05;
+  --text-hero-letter-spacing: -0.02em;
+
+  --text-h2-desktop: 52px;
+  --text-h2-tablet: 40px;
+  --text-h2-mobile: 30px;
+  --text-h2-weight: 600;
+  --text-h2-line-height: 1.1;
+  --text-h2-letter-spacing: -0.01em;
+
+  --text-card-title-desktop: 24px;
+  --text-card-title-tablet: 22px;
+  --text-card-title-mobile: 20px;
+  --text-card-title-weight: 600;
+
+  --text-body-desktop: 18px;
+  --text-body-tablet: 17px;
+  --text-body-mobile: 16px;
+  --text-body-weight: 400;
+  --text-body-line-height: 1.55;
+
+  --text-eyebrow-size: 11px;
+  --text-eyebrow-weight: 500;
+  --text-eyebrow-letter-spacing: 0.14em;
+  /* eyebrow is always --font-mono + uppercase; enforced at component level */
+
+  /* ---- Shape ---- */
+  --radius-card: 14px;
+  --radius-button: 10px;
+  --radius-input: 10px;
+  --radius-pill: 999px;
+
+  /* ---- Spacing scale (px) ----
+     4 8 12 16 24 32 48 64 96 maps 1:1 onto Tailwind's default 0.25rem-based
+     spacing scale (p-1..p-24), so no custom spacing keys are needed —
+     documented here for reference only. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --gutter-desktop: 24px;
+  --gutter-mobile: 16px;
+
+  /* ---- Motion (define only — no animation built this milestone) ---- */
+  --motion-duration-min: 200ms;
+  --motion-duration-max: 600ms;
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Self-hosted fonts — placeholder.
+   WOFF2 files + @font-face rules land in Milestone 2. Do NOT add a font
+   CDN (Google Fonts, etc.) here — that is a hard-rule violation. Until
+   the files land, --font-display/--font-body/--font-mono fall back to
+   system-ui / ui-monospace.
+
+   @font-face {
+     font-family: "Inter";
+     src: url("/fonts/inter-var.woff2") format("woff2");
+     font-weight: 400 700;
+     font-display: swap;
+   }
+   @font-face {
+     font-family: "IBM Plex Mono";
+     src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+     font-weight: 500;
+     font-display: swap;
+   }
+   ========================================================================== */
