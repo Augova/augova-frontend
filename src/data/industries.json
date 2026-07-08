@@ -1,0 +1,8 @@
+[
+  { "name": "Home Services", "examples": "HVAC, plumbing, electrical, cleaning, roofing", "tags": ["Emergency calls", "Booking", "Follow-up"] },
+  { "name": "Clinics & Wellness", "examples": "Dental, medical, physio, beauty", "tags": ["Scheduling", "Reminders", "FAQs"] },
+  { "name": "Professional Services", "examples": "Legal, accounting, consulting, insurance", "tags": ["Intake", "Qualification", "Handoff"] },
+  { "name": "Automotive", "examples": "Repair shops, detailing, dealerships", "tags": ["Service booking", "Status calls", "Quotes"] },
+  { "name": "Real Estate & Property", "examples": "Realtors, property managers", "tags": ["Showings", "Tenant calls", "Maintenance"] },
+  { "name": "Retail & Hospitality", "examples": "Restaurants, local shops", "tags": ["Reservations", "Questions", "Support"] }
+]

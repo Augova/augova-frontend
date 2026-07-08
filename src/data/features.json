@@ -1,0 +1,10 @@
+[
+  { "title": "Natural conversation", "body": "Understands free-form speech, not phone-tree menus. Handles interruptions, pauses, and background noise." },
+  { "title": "Always on", "body": "Answers 24/7 with unlimited simultaneous calls. No voicemail, no hold music, no busy signal." },
+  { "title": "Grounded answers", "body": "Answers from your approved FAQs, services, hours, and policies — and won't invent what it doesn't know." },
+  { "title": "Live booking", "body": "Books, reschedules, and cancels right on the call, synced to your calendar." },
+  { "title": "Lead capture", "body": "Collects name, need, urgency, and contact details, written straight to your CRM." },
+  { "title": "Warm human handoff", "body": "Transfers important calls with a summary, so the caller never repeats themselves." },
+  { "title": "Call summaries", "body": "A clean transcript, summary, and action items after every call." },
+  { "title": "Missed-call recovery", "body": "Detects dropped calls and follows up by text before the lead moves on." }
+]

@@ -1,0 +1,5 @@
+[
+  { "id": "booking", "label": "Booking a new appointment", "audio": "/audio/demo-booking.mp3", "transcript": "[[PLACEHOLDER transcript — record from live demo agent]]" },
+  { "id": "faq", "label": "Answering a common question", "audio": "/audio/demo-faq.mp3", "transcript": "[[PLACEHOLDER transcript]]" },
+  { "id": "handoff", "label": "Handing off to a human", "audio": "/audio/demo-handoff.mp3", "transcript": "[[PLACEHOLDER transcript]]" }
+]

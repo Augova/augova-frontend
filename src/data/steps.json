@@ -1,0 +1,10 @@
+{
+  "steps": [
+    { "n": "01", "title": "Call workflow audit", "body": "We map how your calls work today — who calls, why, and when a human needs to step in." },
+    { "n": "02", "title": "Knowledge setup", "body": "We load your FAQs, services, hours, policies, and escalation rules." },
+    { "n": "03", "title": "System integration", "body": "We connect your phone line, calendar, CRM, SMS, and email." },
+    { "n": "04", "title": "Test calls", "body": "We run realistic calls before launch — bookings, FAQs, urgent and noisy callers." },
+    { "n": "05", "title": "Go live & improve", "body": "The receptionist answers real calls. We monitor performance and keep refining." }
+  ],
+  "reliability": ["Approved knowledge base", "Human fallback", "Call logs & transcripts", "Pre-launch test calls", "Live monitoring", "Version control", "Failover routing"]
+}

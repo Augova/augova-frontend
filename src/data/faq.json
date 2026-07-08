@@ -1,0 +1,10 @@
+[
+  { "q": "Will callers know they're talking to an AI?", "a": "Yes — it's designed to. Augova introduces itself as an assistant, which Canadian privacy practice favors, and hands off to a person whenever a caller asks or the situation calls for it." },
+  { "q": "What happens if it doesn't know the answer?", "a": "It won't guess. Augova answers only from the information you approve, and routes anything outside that to a human or takes a message." },
+  { "q": "Do we keep our existing phone number?", "a": "Yes. Augova works with your current number — no porting needed unless you want it." },
+  { "q": "Is this compliant with Canadian privacy law?", "a": "Yes. Augova is built to PIPEDA practice: call-recording disclosure, sensitive-data redaction in logs, and Canadian data handling." },
+  { "q": "How much does it cost?", "a": "It depends on your business type and what you want it to handle. It's a simple setup fee plus a flat monthly rate — and the monthly doesn't start until after a 30-day proof window. We'll give you an exact number on the demo call." },
+  { "q": "How long until it's live?", "a": "Usually one to two weeks — setup, integration, testing, and launch." },
+  { "q": "Can it book into our calendar or practice software?", "a": "Yes. Google, Outlook, and Cal.com out of the box, plus deeper integrations with systems like Dentrix, Jane, Clio, and Jobber." },
+  { "q": "What about when we're busy or after hours?", "a": "That's the point. Augova answers every call at once, around the clock, so nothing slips to voicemail." }
+]
