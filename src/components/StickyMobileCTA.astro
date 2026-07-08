@@ -1,0 +1,58 @@
+---
+// Augova — sticky mobile Book Demo bar (spec §7.12). Mobile only; slides up
+// once the user scrolls past the hero, and hides again while the footer is on
+// screen so it never covers the footer's own CTAs. Tiny vanilla JS.
+import Button from "./Button.astro";
+---
+
+<div id="sticky-cta" class="sticky-cta md:hidden" data-visible="false">
+  <div class="mx-auto flex max-w-container items-center px-gutter-mobile py-3">
+    <Button variant="inverted" href="/demo" class="w-full">Book Demo</Button>
+  </div>
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background-color: var(--ink);
+    border-top: 1px solid var(--gray-900);
+    transform: translateY(100%);
+    transition: transform var(--motion-duration-min) var(--motion-ease);
+  }
+  .sticky-cta[data-visible="true"] {
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const bar = document.getElementById("sticky-cta");
+  if (bar) {
+    const footer = document.querySelector("footer");
+    let footerVisible = false;
+
+    const update = () => {
+      // "after the hero scrolls out" — the hero is ~one viewport tall.
+      const pastHero = window.scrollY > window.innerHeight * 0.8;
+      bar.dataset.visible = pastHero && !footerVisible ? "true" : "false";
+    };
+
+    if (footer && "IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        footerVisible = entries[0].isIntersecting;
+        update();
+      }).observe(footer);
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+</script>

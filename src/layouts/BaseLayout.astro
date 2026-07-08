@@ -1,18 +1,33 @@
 ---
-// Augova — base document shell (Milestone 2).
-// Owns <head>: charset, viewport, self-hosted font preloads, global.css.
+// Augova — base document shell (Milestone 2, extended in Milestone 3).
+// Owns <head> (charset, viewport, self-hosted font preloads, JSON-LD slot)
+// and the persistent chrome: Header → <main> → Footer + sticky mobile CTA.
 // Does NOT own <h1> — every page supplies exactly one itself (spec §4).
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyMobileCTA from "../components/StickyMobileCTA.astro";
 
 interface Props {
   title: string;
   description?: string;
-  /** Dev-preview pages (e.g. /styleguide) set this to keep them out of
-   * search results without needing a separate robots.txt entry. */
+  /** Keep dev/preview pages (e.g. /styleguide) out of search results. */
   noindex?: boolean;
+  /** Homepage sets this true so the header floats transparent over the dark
+   *  hero and solidifies on scroll. Every other page: solid from the top. */
+  transparentHeader?: boolean;
+  /** Render WITHOUT site chrome (no header/footer/CTA) — used by the dev
+   *  styleguide so it stays a pure component preview with its own <main>. */
+  bare?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  transparentHeader = false,
+  bare = false,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -26,9 +41,7 @@ const { title, description, noindex = false } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Self-hosted font preloads. Only the two weights used above the
-         fold (regular body copy + semibold display headings) are
-         preloaded — 500/mono load lazily behind font-display: swap. -->
+    <!-- Self-hosted font preloads (M2): only the two above-the-fold weights. -->
     <link
       rel="preload"
       href="/fonts/inter-400.woff2"
@@ -44,9 +57,27 @@ const { title, description, noindex = false } = Astro.props;
       crossorigin
     />
 
+    <!-- Structured data — pages inject via this slot (empty until SEO, M11). -->
+    <slot name="jsonld" />
+
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    {
+      bare ? (
+        <main>
+          <slot />
+        </main>
+      ) : (
+        <Fragment>
+          <Header transparent={transparentHeader} />
+          <main>
+            <slot />
+          </main>
+          <Footer />
+          <StickyMobileCTA />
+        </Fragment>
+      )
+    }
   </body>
 </html>

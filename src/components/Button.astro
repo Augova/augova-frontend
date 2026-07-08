@@ -1,11 +1,12 @@
 ---
 // Augova — single monochrome Button (Milestone 2, spec §3/§7).
-// Two variants only: primary (ink fill) and secondary (outline). No third
-// variant, no --signal — this is the one button used everywhere on the
-// site. Renders <a> when `href` is passed, otherwise <button>.
+// Variants: primary (ink fill, for light sections), secondary (outline), and
+// inverted (paper fill for the dark header/hero — spec §7.0 "solid white"
+// Book Demo CTA). Still one component, still no --signal. Renders <a> when
+// `href` is passed, otherwise <button>.
 
 interface Props {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "inverted";
   href?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -29,16 +30,25 @@ const base =
   "disabled:opacity-40 disabled:cursor-not-allowed";
 
 const variants = {
+  // primary sits on light sections — dark fill, dark (ink) focus ring so the
+  // ring is visible against the surrounding paper background.
   primary:
     "bg-ink text-paper " +
     "hover:bg-black active:bg-black active:opacity-90 " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink " +
     "disabled:hover:bg-ink",
   secondary:
     "bg-transparent text-ink border border-gray-300 " +
     "hover:border-ink hover:bg-gray-100 active:bg-gray-100 " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink " +
     "disabled:hover:border-gray-300 disabled:hover:bg-transparent",
+  // inverted sits on the dark header/hero — paper fill, paper focus ring so
+  // the ring is visible against the surrounding ink background (spec §7.0).
+  inverted:
+    "bg-paper text-ink " +
+    "hover:bg-white active:bg-white active:opacity-90 " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper " +
+    "disabled:hover:bg-paper",
 };
 
 const classes = [base, variants[variant], className].join(" ");

@@ -1,0 +1,26 @@
+---
+// Augova — reusable section wrapper (spec §9). Owns section theme, an
+// optional mono eyebrow, an anchor id, and consistent vertical rhythm +
+// container width/gutters from tokens. Every M5 homepage section is built
+// from this so spacing and theming stay uniform.
+interface Props {
+  theme?: "light" | "dark";
+  eyebrow?: string;
+  id?: string;
+  class?: string;
+}
+const { theme = "light", eyebrow, id, class: className = "" } = Astro.props;
+
+const themeClass = theme === "dark" ? "bg-ink text-paper" : "bg-paper text-ink";
+---
+
+<section id={id} class:list={[themeClass, "py-16 md:py-24", className]}>
+  <div class="mx-auto max-w-container px-gutter-mobile md:px-gutter">
+    {
+      eyebrow && (
+        <p class="font-mono uppercase text-eyebrow text-gray-500 mb-6">{eyebrow}</p>
+      )
+    }
+    <slot />
+  </div>
+</section>

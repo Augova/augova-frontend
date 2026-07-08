@@ -1,0 +1,91 @@
+---
+// Augova — site footer (spec §7.12). Three columns + bottom line. Fully
+// static, no JS. Canadian framing only (PIPEDA/CRTC) — no HIPAA/SOC2/US
+// claims, no pricing, no secondary products in the link set.
+const year = new Date().getFullYear();
+
+const productLinks = [
+  { label: "AI Voice Receptionist", href: "/#receptionist" },
+  { label: "Features", href: "/#receptionist" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Industries", href: "/#industries" },
+];
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "Book Demo", href: "/demo" },
+];
+// Trust items: only the first is a link (Privacy). The rest are plain
+// statements (spec §7.12 final copy) — no links, no compliance badges.
+const trustStatements = [
+  "PIPEDA-aligned data handling",
+  "Human handoff by design",
+  "Your data stays yours",
+];
+
+const linkClass =
+  "text-label text-gray-300 transition-colors duration-motion-min ease-augova hover:text-paper";
+const headingClass = "font-mono uppercase text-eyebrow text-gray-500 mb-4";
+---
+
+<footer class="bg-ink text-gray-300">
+  <div class="mx-auto max-w-container px-gutter-mobile py-16 md:px-gutter">
+    <div class="grid gap-12 md:grid-cols-4">
+      <!-- Brand -->
+      <div>
+        <span class="font-display text-card-title-desktop text-paper">Augova</span>
+        {/* TODO: confirm footer tagline copy from spec §7.12 (not specified there) */}
+        <p class="text-small mt-3 max-w-xs">
+          Managed AI voice receptionist for GTA / York Region small businesses.
+        </p>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <p class={headingClass}>Product</p>
+        <ul class="flex flex-col gap-3">
+          {
+            productLinks.map((l) => (
+              <li>
+                <a href={l.href} class={linkClass}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <p class={headingClass}>Company</p>
+        <ul class="flex flex-col gap-3">
+          {
+            companyLinks.map((l) => (
+              <li>
+                <a href={l.href} class={linkClass}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="text-label text-gray-500">
+            [[PLACEHOLDER: contact email — Zoho custom-domain address]]
+          </li>
+        </ul>
+      </div>
+
+      <!-- Trust -->
+      <div>
+        <p class={headingClass}>Trust</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="/privacy" class={linkClass}>Privacy Policy</a></li>
+          {trustStatements.map((s) => <li class="text-label text-gray-500">{s}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-small text-gray-500 mt-16">
+      © {year} Augova. AI partner for SMBs — starting with the phone.
+    </p>
+  </div>
+</footer>

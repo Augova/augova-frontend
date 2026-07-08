@@ -1,0 +1,222 @@
+---
+// Augova — sticky site header (spec §7.0). A permanently dark chrome:
+// solid --ink by default; when `transparent` (homepage, floating over the
+// dark hero) it starts transparent and solidifies past 80px of scroll.
+// Mobile: wordmark + Book Demo + hamburger; nav links live in a full-screen
+// overlay. Nav is voice-receptionist ONLY — no Pricing, no Contact, no
+// secondary products (hard rule). All JS here is tiny vanilla — no framework.
+import Button from "./Button.astro";
+
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+
+// Header nav labels are spec §7.0 final copy. NOTE: the "Nav (all pages)"
+// summary line elsewhere in the reference says "Features"; §7.0 — the
+// header's own spec — says "AI Receptionist". Following the component-level
+// spec. Defined once so the label set is trivially swappable.
+const navLinks = [
+  { label: "AI Receptionist", href: "/#receptionist" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Industries", href: "/#industries" },
+  { label: "About", href: "/about" },
+];
+---
+
+<header
+  class:list={["site-header", { "site-header--transparent": transparent }]}
+  data-transparent={transparent ? "true" : "false"}
+>
+  <div
+    class="mx-auto flex h-16 max-w-container items-center justify-between px-gutter-mobile md:px-gutter"
+  >
+    <!-- Wordmark -->
+    <a
+      href="/"
+      class="font-display text-card-title-mobile text-paper md:text-card-title-desktop"
+      >Augova</a
+    >
+
+    <!-- Desktop nav -->
+    <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map((l) => (
+          <a
+            href={l.href}
+            class="text-label text-gray-300 transition-colors duration-motion-min ease-augova hover:text-paper"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <Button variant="inverted" href="/demo">Book Demo</Button>
+    </nav>
+
+    <!-- Mobile controls -->
+    <div class="flex items-center gap-3 md:hidden">
+      <Button variant="inverted" href="/demo">Book Demo</Button>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex h-11 w-11 items-center justify-center text-paper"
+        aria-label="Open menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile full-screen overlay menu -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu"
+    hidden
+  >
+    <div
+      class="mx-auto flex h-16 max-w-container items-center justify-between px-gutter-mobile"
+    >
+      <span class="font-display text-card-title-mobile text-paper">Augova</span>
+      <button
+        type="button"
+        id="menu-close"
+        class="inline-flex h-11 w-11 items-center justify-center text-paper"
+        aria-label="Close menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+    <nav
+      aria-label="Mobile"
+      class="mx-auto flex max-w-container flex-col gap-6 px-gutter-mobile pt-8"
+    >
+      {
+        navLinks.map((l) => (
+          <a href={l.href} class="font-display text-h2-mobile text-paper">
+            {l.label}
+          </a>
+        ))
+      }
+      <div class="pt-4">
+        <Button variant="inverted" href="/demo">Book Demo</Button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    width: 100%;
+    background-color: var(--ink);
+    border-bottom: 1px solid var(--gray-900);
+    transition:
+      background-color var(--motion-duration-min) var(--motion-ease),
+      border-color var(--motion-duration-min) var(--motion-ease),
+      backdrop-filter var(--motion-duration-min) var(--motion-ease);
+  }
+  /* Transparent-over-hero start state (homepage). */
+  .site-header--transparent {
+    background-color: transparent;
+    border-bottom-color: transparent;
+  }
+  /* Solidify once scrolled past the hero threshold (JS toggles .is-scrolled). */
+  .site-header--transparent.is-scrolled {
+    background-color: var(--ink);
+    border-bottom-color: var(--gray-900);
+    backdrop-filter: blur(var(--blur-nav));
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background-color: var(--ink);
+  }
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // --- Scroll-solidify: only runs when the header floats transparent. ---
+  const header = document.querySelector<HTMLElement>(".site-header");
+  if (header && header.dataset.transparent === "true") {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 80);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // --- Mobile full-screen menu: vanilla, accessible, no framework. ---
+  const toggle = document.getElementById("menu-toggle");
+  const closeBtn = document.getElementById("menu-close");
+  const menu = document.getElementById("mobile-menu");
+
+  if (toggle && closeBtn && menu) {
+    const focusable = () =>
+      Array.from(
+        menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+      );
+
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      if (e.key === "Tab") {
+        const items = focusable();
+        if (items.length === 0) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    const open = () => {
+      menu.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+      focusable()[0]?.focus();
+      document.addEventListener("keydown", onKeydown);
+    };
+    function close() {
+      menu!.hidden = true;
+      toggle!.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeydown);
+      toggle!.focus();
+    }
+
+    toggle.addEventListener("click", open);
+    closeBtn.addEventListener("click", close);
+    // Tapping a link navigates away/scrolls to a section — close first.
+    menu
+      .querySelectorAll("a[href]")
+      .forEach((a) => a.addEventListener("click", close));
+  }
+</script>

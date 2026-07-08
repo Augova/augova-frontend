@@ -126,10 +126,13 @@
   --gutter-desktop: 24px;
   --gutter-mobile: 16px;
 
-  /* ---- Motion (define only — no animation built this milestone) ---- */
+  /* ---- Motion ---- */
   --motion-duration-min: 200ms;
   --motion-duration-max: 600ms;
   --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Effects ---- */
+  --blur-nav: 16px; /* header/overlay backdrop-blur on scroll (spec §7.0) */
 }
 
 /* ==========================================================================

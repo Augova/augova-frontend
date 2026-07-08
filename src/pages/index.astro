@@ -1,7 +1,44 @@
 ---
+// Homepage — Milestone 3 uses placeholder shell content so the layout,
+// section themes, header, footer, and sticky mobile CTA are all testable.
+// Real §7 homepage sections + hero land in Milestone 5.
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
 ---
 
-<BaseLayout title="Augova" description="AI voice receptionist for GTA / York Region SMBs.">
-	<h1>Augova</h1>
+<BaseLayout
+  title="Augova — AI voice receptionist"
+  description="Managed AI voice receptionist for GTA / York Region small businesses. Every call answered, qualified, and booked."
+  transparentHeader={true}
+>
+  <Section theme="dark" eyebrow="Managed AI receptionist" id="receptionist">
+    <h1 class="font-display text-hero-mobile max-w-3xl md:text-hero-desktop">
+      Every call answered. Every job booked.
+    </h1>
+    <p class="font-body text-lead-mobile mt-6 max-w-2xl text-gray-300 md:text-lead-desktop">
+      A managed AI voice receptionist for GTA / York Region small businesses —
+      so you never miss a customer to voicemail again.
+    </p>
+    <div class="mt-8">
+      <Button variant="inverted" href="/demo">Book Demo</Button>
+    </div>
+  </Section>
+
+  <Section theme="light" eyebrow="How it works" id="how-it-works">
+    <h2 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      Set up in 1–2 weeks. Proven in 30 days.
+    </h2>
+    <p class="font-body text-body-mobile mt-6 max-w-2xl text-gray-700 md:text-body-desktop">
+      Placeholder shell content for Milestone 3 — scroll to see the sticky
+      mobile CTA appear, and open the menu on a narrow viewport. Real copy and
+      sections arrive in Milestone 5.
+    </p>
+  </Section>
+
+  <Section theme="light" eyebrow="Industries" id="industries">
+    <h2 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      Built for the trades, clinics, and local services.
+    </h2>
+  </Section>
 </BaseLayout>
