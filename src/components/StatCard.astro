@@ -1,0 +1,27 @@
+---
+// Augova — StatCard (spec §7.2, dark "missed-call problem" strip).
+// One sourced proof stat: big tabular value, label, and a small linked source.
+// Styled for the dark section (gray-900 surface on ink). Count-up animation is
+// deferred to the animation milestone — the value renders static here.
+import type { Stat } from "../data/types";
+
+interface Props {
+  stat: Stat;
+}
+const { stat } = Astro.props;
+---
+
+<div class="flex flex-col rounded-card border border-gray-700 bg-gray-900 p-6">
+  <p class="font-display text-h2-mobile tabular-nums text-paper md:text-h2-tablet">
+    {stat.value}
+  </p>
+  <p class="font-body text-body-mobile mt-3 text-gray-300">{stat.label}</p>
+  <a
+    href={stat.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="font-mono text-small mt-4 inline-block text-gray-500 underline decoration-gray-700 underline-offset-4 transition-colors hover:text-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+  >
+    Source: {stat.source}
+  </a>
+</div>

@@ -6,7 +6,7 @@
 // `href` is passed, otherwise <button>.
 
 interface Props {
-  variant?: "primary" | "secondary" | "inverted";
+  variant?: "primary" | "secondary" | "inverted" | "outline-inverted";
   href?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -49,6 +49,13 @@ const variants = {
     "hover:bg-white active:bg-white active:opacity-90 " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper " +
     "disabled:hover:bg-paper",
+  // outline-inverted is the secondary CTA on dark sections (e.g. the hero's
+  // "Hear it answer a call"): transparent with a paper outline + paper ring.
+  "outline-inverted":
+    "bg-transparent text-paper border border-gray-500 " +
+    "hover:border-paper hover:bg-white/10 active:bg-white/10 " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper " +
+    "disabled:hover:border-gray-500 disabled:hover:bg-transparent",
 };
 
 const classes = [base, variants[variant], className].join(" ");

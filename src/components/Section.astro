@@ -12,13 +12,16 @@ interface Props {
 const { theme = "light", eyebrow, id, class: className = "" } = Astro.props;
 
 const themeClass = theme === "dark" ? "bg-ink text-paper" : "bg-paper text-ink";
+// Eyebrow color is theme-aware: gray-500 clears AA on the dark ink background
+// but not on light paper (2.9:1), so light sections use gray-700 (9.4:1).
+const eyebrowColor = theme === "dark" ? "text-gray-500" : "text-gray-700";
 ---
 
 <section id={id} class:list={[themeClass, "py-16 md:py-24", className]}>
   <div class="mx-auto max-w-container px-gutter-mobile md:px-gutter">
     {
       eyebrow && (
-        <p class="font-mono uppercase text-eyebrow text-gray-500 mb-6">{eyebrow}</p>
+        <p class:list={["font-mono uppercase text-eyebrow mb-6", eyebrowColor]}>{eyebrow}</p>
       )
     }
     <slot />

@@ -1,0 +1,87 @@
+---
+// Augova — LiveCallVisual (spec §7.3, dark product-intro section).
+// A stylized live-call dashboard built entirely from CSS/DOM/SVG (NO WebGL —
+// the map hero is the site's only WebGL element). It demonstrates the product
+// where the section's words describe it: a transcript panel, an action-flow
+// strip, and outcome chips. Fully static in M5 (typing + float motion is
+// deferred to the animation milestone); monochrome only, no --signal.
+
+// Static transcript lines (illustrative — not a real recording).
+const transcript = [
+  { who: "Caller", line: "Hi, do you have anything open tomorrow afternoon?" },
+  { who: "Augova", line: "We do — there's a 2:30 or a 4:00. Which works better?" },
+  { who: "Caller", line: "Let's do 2:30." },
+  { who: "Augova", line: "Booked for 2:30. I'll text you a confirmation now." },
+];
+
+const flow = [
+  "Incoming call",
+  "Understanding",
+  "Checking calendar",
+  "Booked",
+  "CRM updated",
+];
+
+const outcomes = ["Lead captured", "Appointment booked", "SMS sent", "Summary ready"];
+---
+
+<div class="rounded-card overflow-hidden border border-gray-700 bg-gray-900">
+  <!-- Call header -->
+  <div class="flex items-center justify-between border-b border-gray-700 px-5 py-3">
+    <div class="flex items-center gap-2.5">
+      <span aria-hidden="true" class="size-2 rounded-pill bg-gray-300"></span>
+      <span class="font-mono text-small uppercase tracking-wide text-gray-300">Live call</span>
+    </div>
+    <span class="font-mono text-small tabular-nums text-gray-500">00:24</span>
+  </div>
+
+  <!-- Transcript -->
+  <div class="flex flex-col gap-3 p-5">
+    {
+      transcript.map((t) => (
+        <div class:list={["max-w-[85%]", t.who === "Caller" ? "self-start" : "self-end"]}>
+          <p class="font-mono text-small mb-1 text-gray-500">{t.who}</p>
+          <p
+            class:list={[
+              "font-body text-body-mobile rounded-input px-4 py-2.5",
+              t.who === "Caller"
+                ? "border border-gray-700 text-gray-300"
+                : "bg-paper text-ink",
+            ]}
+          >
+            {t.line}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Action-flow strip -->
+  <div class="border-t border-gray-700 px-5 py-4">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-2">
+      {
+        flow.map((step, i) => (
+          <li class="flex items-center gap-2">
+            <span class="font-mono text-small text-gray-300">{step}</span>
+            {i < flow.length - 1 && (
+              <span aria-hidden="true" class="text-gray-600">
+                →
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <!-- Outcome chips -->
+  <div class="flex flex-wrap gap-2 border-t border-gray-700 px-5 py-4">
+    {
+      outcomes.map((o) => (
+        <span class="font-mono text-small rounded-pill border border-gray-700 px-3 py-1 text-gray-300">
+          {o}
+        </span>
+      ))
+    }
+  </div>
+</div>

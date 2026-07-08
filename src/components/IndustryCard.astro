@@ -1,0 +1,26 @@
+---
+// Augova — IndustryCard (spec §7.9 "Built for call-heavy businesses", dark).
+// name + examples + tag chips. Styled for the dark section (gray-900 on ink).
+import type { Industry } from "../data/types";
+
+interface Props {
+  industry: Industry;
+}
+const { industry } = Astro.props;
+---
+
+<div class="flex flex-col rounded-card border border-gray-700 bg-gray-900 p-6">
+  <h3 class="font-display text-card-title-mobile text-paper md:text-card-title-desktop">
+    {industry.name}
+  </h3>
+  <p class="font-body text-body-mobile mt-2 text-gray-300">{industry.examples}</p>
+  <ul class="mt-4 flex flex-wrap gap-2">
+    {
+      industry.tags.map((tag) => (
+        <li class="font-mono text-small rounded-pill border border-gray-700 px-3 py-1 text-gray-300">
+          {tag}
+        </li>
+      ))
+    }
+  </ul>
+</div>

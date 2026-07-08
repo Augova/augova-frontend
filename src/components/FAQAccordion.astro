@@ -1,0 +1,44 @@
+---
+// Augova — FAQAccordion (spec §7.10, light section).
+// Ported from the shadcn/ui Accordion (Radix) registry source — same trigger +
+// chevron + open-state structure — but rendered on the NATIVE <details>/<summary>
+// primitive. The shared `name="faq"` attribute gives real single-open accordion
+// behavior with zero JavaScript (the platform feature Radix emulates); it's
+// keyboard-operable for free, and first item is open by default. Chevron is
+// lucide `ChevronDown`, matching shadcn's icon.
+import type { Faq } from "../data/types";
+
+interface Props {
+  items: Faq[];
+}
+const { items } = Astro.props;
+---
+
+<div class="mx-auto max-w-3xl">
+  {
+    items.map((item, i) => (
+      <details name="faq" open={i === 0} class="group border-b border-gray-300">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+          <span class="font-display text-card-title-mobile text-ink md:text-card-title-tablet">
+            {item.q}
+          </span>
+          <svg
+            aria-hidden="true"
+            class="ease-augova size-5 shrink-0 text-gray-700 transition-transform duration-200 group-open:rotate-180"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <p class="font-body text-body-mobile max-w-2xl pb-5 text-gray-700 md:text-body-desktop">
+          {item.a}
+        </p>
+      </details>
+    ))
+  }
+</div>
