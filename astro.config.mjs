@@ -16,7 +16,14 @@ export default defineConfig({
   // with the static Astro output — no SSR adapter required.
   output: 'static',
 
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      // /styleguide is a noindex dev-preview page (Milestone 2) — never
+      // publish it in the sitemap.
+      filter: (page) => !page.includes('/styleguide'),
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()]

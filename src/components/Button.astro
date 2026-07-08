@@ -1,0 +1,65 @@
+---
+// Augova — single monochrome Button (Milestone 2, spec §3/§7).
+// Two variants only: primary (ink fill) and secondary (outline). No third
+// variant, no --signal — this is the one button used everywhere on the
+// site. Renders <a> when `href` is passed, otherwise <button>.
+
+interface Props {
+  variant?: "primary" | "secondary";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  href,
+  type = "button",
+  disabled = false,
+  class: className = "",
+} = Astro.props;
+
+// min-h-11 = 2.75rem = 44px via Tailwind's default spacing scale (WCAG AA
+// minimum touch target) — not an arbitrary literal.
+const base =
+  "inline-flex items-center justify-center gap-2 min-h-11 px-6 " +
+  "rounded-button text-label font-body select-none whitespace-nowrap " +
+  "transition-colors duration-motion-min ease-augova " +
+  "disabled:opacity-40 disabled:cursor-not-allowed";
+
+const variants = {
+  primary:
+    "bg-ink text-paper " +
+    "hover:bg-black active:bg-black active:opacity-90 " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper " +
+    "disabled:hover:bg-ink",
+  secondary:
+    "bg-transparent text-ink border border-gray-300 " +
+    "hover:border-ink hover:bg-gray-100 active:bg-gray-100 " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink " +
+    "disabled:hover:border-gray-300 disabled:hover:bg-transparent",
+};
+
+const classes = [base, variants[variant], className].join(" ");
+---
+
+{
+  href && !disabled ? (
+    <a href={href} class={classes}>
+      <slot />
+    </a>
+  ) : (
+    // A disabled <a> has no real HTML semantics without JS (it would still
+    // navigate on click/Enter), so a disabled link renders as a disabled
+    // <button> instead — same visual, correct semantics.
+    <button
+      type={type}
+      class={classes}
+      disabled={disabled}
+      aria-disabled={disabled}
+    >
+      <slot />
+    </button>
+  )
+}

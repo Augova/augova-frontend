@@ -37,10 +37,13 @@
      scoped live-status element in a later milestone (spec §4/§5). */
   --signal: #22C55E;
 
-  /* ---- Typography ---- */
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace; /* eyebrows/labels only */
+  /* ---- Typography ----
+     "Inter Fallback" is a metric-matched local-Arial face (defined below)
+     inserted between Inter and system-ui so the pre-load swap doesn't
+     shift layout (kills font-swap CLS). */
+  --font-display: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; /* eyebrows/labels only */
 
   /* Type scale — desktop / tablet / mobile (px), per spec §3.
      Encoded as tokens only; no components consume these yet. */
@@ -62,12 +65,36 @@
   --text-card-title-tablet: 22px;
   --text-card-title-mobile: 20px;
   --text-card-title-weight: 600;
+  --text-card-title-line-height: 1.3;
+  --text-card-title-letter-spacing: -0.005em;
 
   --text-body-desktop: 18px;
   --text-body-tablet: 17px;
   --text-body-mobile: 16px;
   --text-body-weight: 400;
   --text-body-line-height: 1.55;
+  --text-body-letter-spacing: 0;
+
+  /* lead: hero subhead / intro paragraph — one step up from body, same
+     weight/tracking family so it reads as body's bigger sibling. */
+  --text-lead-desktop: 20px;
+  --text-lead-tablet: 19px;
+  --text-lead-mobile: 18px;
+  --text-lead-weight: 400;
+  --text-lead-line-height: 1.5;
+  --text-lead-letter-spacing: 0;
+
+  /* label: button/nav/UI label text — single size, no responsive steps. */
+  --text-label-size: 15px;
+  --text-label-weight: 500;
+  --text-label-line-height: 1.2;
+  --text-label-letter-spacing: -0.005em;
+
+  /* small: legal/footnote text — single size, no responsive steps. */
+  --text-small-size: 13px;
+  --text-small-weight: 400;
+  --text-small-line-height: 1.45;
+  --text-small-letter-spacing: 0;
 
   --text-eyebrow-size: 11px;
   --text-eyebrow-weight: 500;
@@ -106,22 +133,150 @@
 }
 
 /* ==========================================================================
-   Self-hosted fonts — placeholder.
-   WOFF2 files + @font-face rules land in Milestone 2. Do NOT add a font
-   CDN (Google Fonts, etc.) here — that is a hard-rule violation. Until
-   the files land, --font-display/--font-body/--font-mono fall back to
-   system-ui / ui-monospace.
-
-   @font-face {
-     font-family: "Inter";
-     src: url("/fonts/inter-var.woff2") format("woff2");
-     font-weight: 400 700;
-     font-display: swap;
-   }
-   @font-face {
-     font-family: "IBM Plex Mono";
-     src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
-     font-weight: 500;
-     font-display: swap;
-   }
+   Self-hosted fonts (spec §3 / Milestone 2).
+   Official static WOFF2 builds, subset to latin + latin-ext (covers French
+   diacritics — é/à/ç — for quietly-Canadian copy), self-hosted from
+   /public/fonts. No font CDN (Google Fonts, etc.) — that is a hard-rule
+   violation. Sources: rsms/inter v4.1 official release (Inter-Regular/
+   Medium/SemiBold), IBM/plex @ibm/plex-mono v2.5.0 official release
+   (IBMPlexMono-Medium). Subset with fonttools' pyftsubset.
    ========================================================================== */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259,
+    U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259,
+    U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259,
+    U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259,
+    U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+/* Metric-matched fallback: a "local Arial, but pretending to be Inter's
+   size" face. Values are the well-known published Inter-on-Arial capsize
+   metrics (verified against this Inter build's own OS/2 metrics: real
+   sTypoAscender/unitsPerEm = 1984/2048 = 96.875%, which equals
+   90.49% ascent-override × 107.06% size-adjust — self-consistent). This
+   closes the swap-period layout gap almost completely (near-zero CLS)
+   while Inter itself streams in behind the two preloaded weights. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.49%;
+  descent-override: 22.56%;
+  line-gap-override: 0%;
+  size-adjust: 107.06%;
+}
+
+/* ==========================================================================
+   Base reset + typography (Milestone 2)
+   Small, modern reset — not a full normalize. Everything here reads its
+   values from the tokens above; nothing is hard-coded.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--text-body-weight);
+  font-size: var(--text-body-mobile);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: var(--text-body-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: var(--text-body-desktop);
+  }
+}
+
+/* Visible keyboard-focus ring (WCAG AA). Only shown for keyboard/
+   assistive-tech focus, never on mouse click, via :focus-visible. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* prefers-reduced-motion guard (global). Individual components may still
+   define their own motion, but everything collapses to near-instant here
+   so nothing animates/transitions for users who've asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

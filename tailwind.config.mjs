@@ -86,20 +86,33 @@ export default {
         ],
         "card-title-desktop": [
           "var(--text-card-title-desktop)",
-          { fontWeight: "var(--text-card-title-weight)" },
+          {
+            lineHeight: "var(--text-card-title-line-height)",
+            letterSpacing: "var(--text-card-title-letter-spacing)",
+            fontWeight: "var(--text-card-title-weight)",
+          },
         ],
         "card-title-tablet": [
           "var(--text-card-title-tablet)",
-          { fontWeight: "var(--text-card-title-weight)" },
+          {
+            lineHeight: "var(--text-card-title-line-height)",
+            letterSpacing: "var(--text-card-title-letter-spacing)",
+            fontWeight: "var(--text-card-title-weight)",
+          },
         ],
         "card-title-mobile": [
           "var(--text-card-title-mobile)",
-          { fontWeight: "var(--text-card-title-weight)" },
+          {
+            lineHeight: "var(--text-card-title-line-height)",
+            letterSpacing: "var(--text-card-title-letter-spacing)",
+            fontWeight: "var(--text-card-title-weight)",
+          },
         ],
         "body-desktop": [
           "var(--text-body-desktop)",
           {
             lineHeight: "var(--text-body-line-height)",
+            letterSpacing: "var(--text-body-letter-spacing)",
             fontWeight: "var(--text-body-weight)",
           },
         ],
@@ -107,6 +120,7 @@ export default {
           "var(--text-body-tablet)",
           {
             lineHeight: "var(--text-body-line-height)",
+            letterSpacing: "var(--text-body-letter-spacing)",
             fontWeight: "var(--text-body-weight)",
           },
         ],
@@ -114,7 +128,48 @@ export default {
           "var(--text-body-mobile)",
           {
             lineHeight: "var(--text-body-line-height)",
+            letterSpacing: "var(--text-body-letter-spacing)",
             fontWeight: "var(--text-body-weight)",
+          },
+        ],
+        "lead-desktop": [
+          "var(--text-lead-desktop)",
+          {
+            lineHeight: "var(--text-lead-line-height)",
+            letterSpacing: "var(--text-lead-letter-spacing)",
+            fontWeight: "var(--text-lead-weight)",
+          },
+        ],
+        "lead-tablet": [
+          "var(--text-lead-tablet)",
+          {
+            lineHeight: "var(--text-lead-line-height)",
+            letterSpacing: "var(--text-lead-letter-spacing)",
+            fontWeight: "var(--text-lead-weight)",
+          },
+        ],
+        "lead-mobile": [
+          "var(--text-lead-mobile)",
+          {
+            lineHeight: "var(--text-lead-line-height)",
+            letterSpacing: "var(--text-lead-letter-spacing)",
+            fontWeight: "var(--text-lead-weight)",
+          },
+        ],
+        label: [
+          "var(--text-label-size)",
+          {
+            lineHeight: "var(--text-label-line-height)",
+            letterSpacing: "var(--text-label-letter-spacing)",
+            fontWeight: "var(--text-label-weight)",
+          },
+        ],
+        small: [
+          "var(--text-small-size)",
+          {
+            lineHeight: "var(--text-small-line-height)",
+            letterSpacing: "var(--text-small-letter-spacing)",
+            fontWeight: "var(--text-small-weight)",
           },
         ],
         eyebrow: [
