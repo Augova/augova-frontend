@@ -19,9 +19,9 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      // /styleguide is a noindex dev-preview page (Milestone 2) — never
-      // publish it in the sitemap.
-      filter: (page) => !page.includes('/styleguide'),
+      // /styleguide and /hero-preview are noindex dev-preview pages — never
+      // publish them in the sitemap.
+      filter: (page) => !page.includes('/styleguide') && !page.includes('/hero-preview'),
     }),
   ],
 

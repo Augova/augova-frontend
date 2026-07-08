@@ -1,10 +1,10 @@
 ---
-// Augova homepage (spec §7) — Milestone 5.
+// Augova homepage (spec §7) — Milestone 5 sections + M6 animated hero.
 // All 11 sections top-to-bottom with final copy from src/data + spec §7,
-// alternating dark/light. Static visuals only: the WebGL HeroMap (M6), scroll
-// motion (count-up, typing, staggered reveals — animation milestone), and
-// LeadForm wiring (forms milestone) are deliberately deferred. Exactly one
-// <h1> (the hero). Fully monochrome — no --signal anywhere.
+// alternating dark/light. The hero uses the M6 animated mesh-gradient island
+// (MeshGradientHero) instead of the originally planned map. Scroll motion
+// (count-up, typing, staggered reveals) and LeadForm wiring are still
+// deferred. Exactly one <h1> (the hero). Fully monochrome — no --signal.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
@@ -16,6 +16,7 @@ import FAQAccordion from "../components/FAQAccordion.astro";
 import AudioDemoPlayer from "../components/AudioDemoPlayer.astro";
 import LiveCallVisual from "../components/LiveCallVisual.astro";
 import LeadForm from "../components/LeadForm.astro";
+import HeroSection from "../components/HeroSection.astro";
 
 import statsData from "../data/stats.json";
 import featuresData from "../data/features.json";
@@ -77,34 +78,10 @@ const greetings = [
   transparentHeader={true}
 >
   {/* ---------- 7.1 Hero (dark) ---------- */}
-  <section class="relative isolate overflow-hidden bg-ink text-paper">
-    {/* Subtle monochrome backdrop. The WebGL HeroMap + its static still image
-        layer into this same container in M6, behind this overlay (spec §7.1). */}
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_50%_-10%,rgba(255,255,255,0.07),transparent_70%)]"
-    >
-    </div>
-    <div class="mx-auto max-w-container px-gutter-mobile md:px-gutter">
-      <div class="flex min-h-[90svh] flex-col justify-center py-28 md:py-32">
-        <p class="font-mono text-eyebrow uppercase text-gray-500">
-          AI partner for small &amp; mid-sized businesses
-        </p>
-        <h1 class="font-display text-hero-mobile mt-6 max-w-4xl text-balance md:text-hero-tablet lg:text-hero-desktop">
-          Never miss another call. Never lose another customer.
-        </h1>
-        <p class="font-body text-lead-mobile mt-6 max-w-2xl text-gray-300 md:text-lead-desktop">
-          Augova builds AI receptionists for local businesses — answering every
-          call around the clock, booking appointments, and capturing every lead,
-          so the phone stops costing you customers.
-        </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <Button variant="inverted" href="/demo">Book Free Demo</Button>
-          <Button variant="outline-inverted" href="#demo-audio">Hear it answer a call</Button>
-        </div>
-      </div>
-    </div>
-  </section>
+  {/* Responsive hero: Fluffy Globe (three.js) on laptops/desktops, Mesh
+      gradient on phones/tablets. Phones never download three.js. Both
+      variants can be viewed in isolation at /hero-preview. */}
+  <HeroSection variant="responsive" />
 
   {/* ---------- 7.2 Problem strip (dark) ---------- */}
   <Section theme="dark" eyebrow="The missed-call problem">

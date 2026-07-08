@@ -215,31 +215,40 @@ Author `src/data/`: `stats.json`, `features.json`, `steps.json`, `industries.jso
 ### Milestone 5 — Homepage static build
 Build all §7 sections with real copy and **static** visuals first (no advanced animation yet): hero (static), problem strip, product intro, audio demo, ROI moment, features, multilingual, how-it-works, industries, FAQ, final CTA.
 
-### Milestone 6 — Hero static fallback (`HeroMapStatic`) — **launch-blocking**
-- Build the static hero first: desktop + mobile AVIF/WebP map crops + text overlay.
-- This is the **LCP asset** and the `prefers-reduced-motion` / mobile path. Must exist and be usable on day one. No WebGL on this path.
+### Milestone 6 — Animated mesh-gradient hero (`MeshGradientHero`) — **DONE**
+> **Pivot (2026-07-08, user-directed):** the MapLibre map hero is dropped. The
+> hero is now an animated **monochrome mesh-gradient** (Paper Design shaders /
+> WebGL) rendered as a **React island** — the site's one React island and one
+> WebGL element. This replaces both the old M6 (static map crop) and old M7
+> (MapLibre). The user explicitly waived the JS-budget / 0-React /
+> no-WebGL-outside-a-map guardrails for this. See the `augova-build-decisions`
+> memory.
+- `MeshGradientHero.tsx`: `MeshGradient` from `@paper-design/shaders-react`,
+  dark-biased monochrome from the token ramp (ink / gray-900 / gray-700), no
+  signal green. Mounted `client:only="react"`.
+- Layering in `index.astro`: instant CSS radial backdrop (`-z-20`, the LCP
+  paint + pre-JS/no-JS fallback) → shader island → AA scrim (`-z-10`) → hero
+  text (one `<h1>`, subhead, two CTAs).
+- **Reduced motion:** `speed=0` renders a single still frame (rAF stops). Mobile
+  capped via `maxPixelCount`. Contrast kept AA by the scrim (not waived).
+- Cost: homepage now ships ~64 KB gz JS (57 KB React runtime + 8 KB shader lib).
 
-### Milestone 7 — Desktop `HeroMap` (MapLibre)
-- MapLibre GL JS, monochrome map of GTA/York Region with the six city points.
-- Desktop-capable only; **lazy-loaded/code-split after first paint**; scroll-driven camera (subtle pitch/pan/zoom), **no scroll-jacking**.
-- WebGL only here; never mounts on mobile/reduced-motion (capability/viewport detection at load).
+### Milestone 7 — React islands
+FAQ accordion (keyboard-operable, aria-expanded), stat count-up, audio player (keyboard-operable), lead form, mobile nav, sticky mobile CTA. (React already ships for the hero, so islands here are no longer architecturally special.)
 
-### Milestone 8 — React islands
-FAQ accordion (keyboard-operable, aria-expanded), stat count-up, audio player (keyboard-operable), lead form, mobile nav, sticky mobile CTA. Keep core JS < 100 KB.
-
-### Milestone 9 — Other pages
+### Milestone 8 — Other pages
 `/demo` (Cal.com embed placeholder + 5-field LeadForm + "what happens next"), `/about` (accountability block default), `/privacy` (PIPEDA placeholder content), `/features` (re-skinned salvage S1/S2), `/404`.
 
-### Milestone 10 — Forms, booking, analytics
+### Milestone 9 — Forms, booking, analytics
 `functions/submit.js` (Turnstile verify → email + webhook), Cal.com embed (placeholder link), analytics custom events, graceful behavior when env vars are unset (hide demo-number row, inline form errors). Secrets via Pages env vars only.
 
-### Milestone 11 — SEO & metadata
+### Milestone 10 — SEO & metadata
 Per-page `<title>`/description/canonical, OG images, `@astrojs/sitemap`, `robots.txt`, `LocalBusiness` + `Service` JSON-LD (York Region `areaServed`), one `<h1>` per page, indexable audio transcripts.
 
-### Milestone 12 — Accessibility & performance audit
-Keyboard nav, focus states, AA contrast, reduced-motion path, LCP < 2.5 s mobile, CLS < 0.1, core JS < 100 KB (hero map bundle excluded), verify no WebGL outside hero, verify no forbidden claims. Run against the §13 checklist.
+### Milestone 11 — Accessibility & performance audit
+Keyboard nav, focus states, AA contrast, reduced-motion path (hero still frame), LCP < 2.5 s mobile, CLS < 0.1, verify WebGL only in the hero shader, verify no forbidden claims. Note: the hard JS < 100 KB budget was **waived for the hero** (React island); re-measure and keep the rest of the site lean. Run against the §13 checklist.
 
-### Milestone 13 — GitHub & Cloudflare readiness
+### Milestone 12 — GitHub & Cloudflare readiness
 Push branch **only after approval** → preview deployment → Cloudflare env-var checklist → redirect checklist (`/pricing*` → `/#faq`) → production cutover checklist (approval-gated; never touches `main` without sign-off).
 
 ---

@@ -1,0 +1,84 @@
+---
+// Augova — hero section (spec §7.1). Single source of truth for the hero copy
+// + CTAs, with a swappable background visual so we can A/B two directions:
+//   variant="mesh"  -> MeshGradientHero  (Paper Design mesh-gradient shader)
+//   variant="globe" -> FluffyGlobeHero   (three.js noise-displaced wireframe)
+// The homepage uses "mesh"; /hero-preview renders both to compare.
+//
+// asH1: the homepage needs exactly one <h1>. On the preview page (two heroes)
+// both pass asH1={false} so the headline renders as a styled <p> — same look,
+// valid document.
+import Button from "./Button.astro";
+import MeshGradientHero from "./MeshGradientHero.tsx";
+import FluffyGlobeHero from "./FluffyGlobeHero.tsx";
+import ResponsiveHero from "./ResponsiveHero.tsx";
+
+interface Props {
+  // "responsive" (default): globe on laptops/desktops, mesh on phones/tablets.
+  // "mesh" / "globe" force a single visual (used by /hero-preview).
+  variant?: "responsive" | "mesh" | "globe";
+  asH1?: boolean;
+  /** Optional corner tag, used on the preview page ("Option A — Mesh"). */
+  label?: string;
+}
+const { variant = "responsive", asH1 = true, label } = Astro.props;
+---
+
+<section class="relative isolate overflow-hidden bg-ink text-paper">
+  {/* Base backdrop: renders instantly with zero JS — the LCP paint and the
+      no-JS / pre-hydration fallback under the WebGL visual. */}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(70%_60%_at_50%_-10%,rgba(255,255,255,0.06),transparent_70%)]"
+  >
+  </div>
+
+  {/* Background visual — client-only React island (the one WebGL element).
+      "responsive" picks per-device and lazy-loads only the chosen chunk. */}
+  {variant === "responsive" && <ResponsiveHero client:only="react" />}
+  {variant === "mesh" && <MeshGradientHero client:only="react" />}
+  {variant === "globe" && <FluffyGlobeHero client:only="react" />}
+
+  {/* AA scrim: guarantees hero text contrast over the moving visual. */}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/70"
+  >
+  </div>
+
+  {
+    label && (
+      <span class="font-mono text-small absolute left-4 top-4 z-10 rounded-pill border border-gray-700 bg-ink/60 px-3 py-1 text-gray-300 backdrop-blur-sm">
+        {label}
+      </span>
+    )
+  }
+
+  <div class="relative mx-auto max-w-container px-gutter-mobile md:px-gutter">
+    <div class="flex min-h-[90svh] flex-col justify-center py-28 md:py-32">
+      <p class="font-mono text-eyebrow uppercase text-gray-500">
+        AI partner for small &amp; mid-sized businesses
+      </p>
+      {
+        asH1 ? (
+          <h1 class="font-display text-hero-mobile mt-6 max-w-4xl text-balance md:text-hero-tablet lg:text-hero-desktop">
+            Never miss another call. Never lose another customer.
+          </h1>
+        ) : (
+          <p class="font-display text-hero-mobile mt-6 max-w-4xl text-balance md:text-hero-tablet lg:text-hero-desktop">
+            Never miss another call. Never lose another customer.
+          </p>
+        )
+      }
+      <p class="font-body text-lead-mobile mt-6 max-w-2xl text-gray-300 md:text-lead-desktop">
+        Augova builds AI receptionists for local businesses — answering every
+        call around the clock, booking appointments, and capturing every lead,
+        so the phone stops costing you customers.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <Button variant="inverted" href="/demo">Book Free Demo</Button>
+        <Button variant="outline-inverted" href="#demo-audio">Hear it answer a call</Button>
+      </div>
+    </div>
+  </div>
+</section>

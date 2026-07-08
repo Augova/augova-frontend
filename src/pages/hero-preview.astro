@@ -1,0 +1,20 @@
+---
+// Augova — hero A/B preview (dev only). noindex, bare, excluded from sitemap
+// and unlinked from nav. Renders both hero directions back-to-back so the two
+// can be compared in-context with the real copy + CTAs:
+//   Option A — Mesh   (Paper Design mesh-gradient shader)
+//   Option B — Fluffy Globe (three.js noise-displaced wireframe)
+// three.js only loads on this page, never on the live homepage.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+---
+
+<BaseLayout
+  title="Hero preview — Augova (dev)"
+  noindex={true}
+  bare={true}
+>
+  {/* asH1={false} on both so the document stays valid (one <h1> rule). */}
+  <HeroSection variant="mesh" asH1={false} label="Option A — Mesh" />
+  <HeroSection variant="globe" asH1={false} label="Option B — Fluffy Globe" />
+</BaseLayout>
