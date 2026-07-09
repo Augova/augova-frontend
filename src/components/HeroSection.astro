@@ -1,21 +1,31 @@
 ---
-// Augova — hero section (spec §7.1). Single source of truth for the hero copy
-// + CTAs, with a swappable background visual so we can A/B two directions:
-//   variant="mesh"  -> MeshGradientHero  (Paper Design mesh-gradient shader)
-//   variant="globe" -> FluffyGlobeHero   (three.js noise-displaced wireframe)
-// The homepage uses "mesh"; /hero-preview renders both to compare.
+// Augova — hero section (spec §7.1, §0.6/§4). Single source of truth for the
+// hero copy + CTAs. Visual layering (bottom to top):
+//   1. HeroStatic — always server-rendered; the real LCP image on every
+//                    device, zero JS/WebGL cost.
+//   2. WebGL globe — mounted by a plain vanilla <script> below (no React,
+//                    no client:only island) via src/lib/heroGlobe.ts, ONLY
+//                    for capable desktop with no reduced-motion preference.
+//                    This keeps React (and three.js) off every other
+//                    visitor's network tab entirely — not just unmounted,
+//                    never requested (spec §4 perf budget).
+// variant="mesh"/"globe" force a single WebGL visual regardless of device —
+// used only by /hero-preview (dev-only, noindex, unlinked) to compare the
+// two WebGL options side by side via their React wrappers; never used on
+// the real homepage route.
 //
 // asH1: the homepage needs exactly one <h1>. On the preview page (two heroes)
 // both pass asH1={false} so the headline renders as a styled <p> — same look,
 // valid document.
 import Button from "./Button.astro";
+import HeroStatic from "./HeroStatic.astro";
 import MeshGradientHero from "./MeshGradientHero.tsx";
 import FluffyGlobeHero from "./FluffyGlobeHero.tsx";
-import ResponsiveHero from "./ResponsiveHero.tsx";
 
 interface Props {
-  // "responsive" (default): globe on laptops/desktops, mesh on phones/tablets.
-  // "mesh" / "globe" force a single visual (used by /hero-preview).
+  // "responsive" (default, real homepage): static image everywhere, WebGL
+  // globe layered on top only for capable desktop + no reduced motion.
+  // "mesh" / "globe" force a single WebGL visual (used by /hero-preview).
   variant?: "responsive" | "mesh" | "globe";
   asH1?: boolean;
   /** Optional corner tag, used on the preview page ("Option A — Mesh"). */
@@ -25,24 +35,45 @@ const { variant = "responsive", asH1 = true, label } = Astro.props;
 ---
 
 <section class="relative isolate overflow-hidden bg-ink text-paper">
-  {/* Base backdrop: renders instantly with zero JS — the LCP paint and the
-      no-JS / pre-hydration fallback under the WebGL visual. */}
+  {/* Base backdrop: renders instantly with zero JS — the pre-paint fallback
+      under the static hero image itself (e.g. before the image decodes). */}
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(70%_60%_at_50%_-10%,rgba(255,255,255,0.06),transparent_70%)]"
+    class="pointer-events-none absolute inset-0 -z-30 bg-[radial-gradient(70%_60%_at_50%_-10%,rgba(255,255,255,0.06),transparent_70%)]"
   >
   </div>
 
-  {/* Background visual — client-only React island (the one WebGL element).
-      "responsive" picks per-device and lazy-loads only the chosen chunk.
-      The wrapper (not the island itself) carries the scroll-driven depth
-      transform (spec §10) — pure CSS on a plain div, Three.js/shader
-      internals untouched. */}
-  <div data-parallax="0.15" class="absolute inset-0 -z-20">
-    {variant === "responsive" && <ResponsiveHero client:only="react" />}
+  {/* Background visual. The wrapper (not the island itself) carries the
+      scroll-driven depth transform (spec §10) — pure CSS on a plain div,
+      Three.js/shader internals untouched. */}
+  <div data-parallax="0.15" class="absolute inset-0 -z-20" data-hero-visual>
+    {variant === "responsive" && <HeroStatic />}
     {variant === "mesh" && <MeshGradientHero client:only="react" />}
     {variant === "globe" && <FluffyGlobeHero client:only="react" />}
   </div>
+
+  {
+    variant === "responsive" && (
+      <script>
+        // Vanilla gate (no React) — mounts the WebGL globe on top of the
+        // static image ONLY for capable desktop with no reduced-motion
+        // preference. Everyone else never requests this module at all.
+        const desktopMq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+        const reducedMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        if (desktopMq.matches && !reducedMq.matches) {
+          const wrapper = document.querySelector<HTMLElement>("[data-hero-visual]");
+          if (wrapper) {
+            const mount = document.createElement("div");
+            mount.setAttribute("aria-hidden", "true");
+            mount.className = "pointer-events-none absolute inset-0 h-full w-full";
+            wrapper.appendChild(mount);
+            import("../lib/heroGlobe").then(({ mountHeroGlobe }) => mountHeroGlobe(mount));
+          }
+        }
+      </script>
+    )
+  }
 
   {/* AA scrim: guarantees hero text contrast over the moving visual. */}
   <div

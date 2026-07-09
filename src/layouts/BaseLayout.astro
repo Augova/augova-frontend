@@ -119,6 +119,16 @@ const jsonLd = {
       crossorigin
     />
 
+    {
+      /* Hero static image preload (spec §0.6/§4): transparentHeader is only
+         set true on pages carrying HeroSection, so this is the real LCP
+         asset on every device — preloaded so it never waits behind
+         discovery. AVIF preferred via type-gated imagesrcset fallback. */
+      transparentHeader && (
+        <link rel="preload" as="image" href="/hero/static.avif" type="image/avif" />
+      )
+    }
+
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <!-- Per-page structured data (e.g. FAQPage) can extend via this slot. -->
     <slot name="jsonld" />

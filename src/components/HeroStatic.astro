@@ -1,0 +1,24 @@
+---
+// Augova — HeroStatic (spec §0.6/§4/§9 `HeroMapStatic`, M11).
+// The static, zero-JS hero image: AVIF/WebP, monochrome, same visual
+// language as the WebGL mesh/globe. Rendered directly in the server HTML —
+// NOT behind client:only — so it's always the hero's LCP paint on every
+// device, with zero WebGL/JS cost. WebGL (FluffyGlobeHero) is a progressive
+// enhancement layered on top of this by HeroSection, only for capable
+// desktop with no reduced-motion preference; everywhere else this image is
+// the whole hero visual, exactly per spec ("both must exist and be usable
+// on day one").
+---
+
+<picture>
+  <source srcset="/hero/static.avif" type="image/avif" />
+  <source srcset="/hero/static.webp" type="image/webp" />
+  <img
+    src="/hero/static.webp"
+    alt=""
+    fetchpriority="high"
+    loading="eager"
+    decoding="async"
+    class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+  />
+</picture>

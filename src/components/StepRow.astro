@@ -3,6 +3,8 @@
 // One numbered step. The ordinal is decorative (aria-hidden): the parent <ol>
 // already conveys sequence to assistive tech. Rendered inside an <ol> by the
 // section so the numbering is real, not faked.
+// gray-700 (not gray-500) on the ordinal: gray-500 on paper is 2.9:1, below
+// AA — gray-500 is reserved for dark sections (M11 audit fix).
 import type { Step } from "../data/types";
 
 interface Props {
@@ -14,7 +16,7 @@ const { step } = Astro.props;
 <li class="flex gap-5 md:gap-6">
   <span
     aria-hidden="true"
-    class="font-mono text-card-title-mobile shrink-0 tabular-nums text-gray-500 md:text-card-title-desktop"
+    class="font-mono text-card-title-mobile shrink-0 tabular-nums text-gray-700 md:text-card-title-desktop"
   >
     {step.n}
   </span>
