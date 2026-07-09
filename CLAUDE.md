@@ -1,6 +1,6 @@
 # Augova Website — Agent Guide
 
-Marketing site for **Augova**: a managed AI **voice receptionist** for GTA / York Region SMBs. Sales-led, not self-serve. Full build spec: **`docs/BUILD-SPEC.md`** — read it before building and follow it exactly. This file is only the always-on guardrails.
+Marketing site for **Augova**: a managed AI **voice receptionist** for GTA / York Region SMBs. Sales-led, not self-serve. Full build spec: **`augova-build-reference.md`** (repo root, the canonical source of truth) — read it before building and follow it exactly. This file is only the always-on guardrails.
 
 **Build type:** a **NEW Astro + React site**, not a refactor. Salvage from the old repo (`Augova/augova-frontend`): the features-page content and on-strategy copy (spec §0.5). Do NOT adopt its `DESIGN.md`, fonts, or shape language — the design system is independently reasoned in spec §3.
 
