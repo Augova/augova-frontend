@@ -14,6 +14,10 @@ const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Book Demo", href: "/demo" },
 ];
+// §7.12 / §14 decision #6 — [[PLACEHOLDER: contact email]]. Row is hidden
+// gracefully whenever the env var is unset, same pattern as the §7.4 demo
+// number, so an absent address never ships literal bracket text to visitors.
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || "";
 // Trust items: only the first is a link (Privacy). The rest are plain
 // statements (spec §7.12 final copy) — no links, no compliance badges.
 const trustStatements = [
@@ -68,9 +72,15 @@ const headingClass = "font-mono uppercase text-eyebrow text-gray-500 mb-4";
               </li>
             ))
           }
-          <li class="text-label text-gray-500">
-            [[PLACEHOLDER: contact email — Zoho custom-domain address]]
-          </li>
+          {
+            contactEmail && (
+              <li>
+                <a href={`mailto:${contactEmail}`} class={linkClass}>
+                  {contactEmail}
+                </a>
+              </li>
+            )
+          }
         </ul>
       </div>
 
