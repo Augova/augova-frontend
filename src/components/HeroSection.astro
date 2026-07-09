@@ -34,10 +34,15 @@ const { variant = "responsive", asH1 = true, label } = Astro.props;
   </div>
 
   {/* Background visual — client-only React island (the one WebGL element).
-      "responsive" picks per-device and lazy-loads only the chosen chunk. */}
-  {variant === "responsive" && <ResponsiveHero client:only="react" />}
-  {variant === "mesh" && <MeshGradientHero client:only="react" />}
-  {variant === "globe" && <FluffyGlobeHero client:only="react" />}
+      "responsive" picks per-device and lazy-loads only the chosen chunk.
+      The wrapper (not the island itself) carries the scroll-driven depth
+      transform (spec §10) — pure CSS on a plain div, Three.js/shader
+      internals untouched. */}
+  <div data-parallax="0.15" class="absolute inset-0 -z-20">
+    {variant === "responsive" && <ResponsiveHero client:only="react" />}
+    {variant === "mesh" && <MeshGradientHero client:only="react" />}
+    {variant === "globe" && <FluffyGlobeHero client:only="react" />}
+  </div>
 
   {/* AA scrim: guarantees hero text contrast over the moving visual. */}
   <div
@@ -55,7 +60,11 @@ const { variant = "responsive", asH1 = true, label } = Astro.props;
   }
 
   <div class="relative mx-auto max-w-container px-gutter-mobile md:px-gutter">
-    <div class="flex min-h-[90svh] flex-col justify-center py-28 md:py-32">
+    <div
+      class="flex min-h-[90svh] flex-col justify-center py-28 md:py-32"
+      data-reveal-group
+      data-reveal-stagger="120"
+    >
       <p class="font-mono text-eyebrow uppercase text-gray-500">
         AI partner for small &amp; mid-sized businesses
       </p>

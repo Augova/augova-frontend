@@ -185,7 +185,7 @@ const greetings = [
     <h2 class="font-display text-h2-mobile max-w-3xl md:text-h2-desktop">
       Everything your front desk does — and things it can't.
     </h2>
-    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group data-reveal-stagger="80">
       {features.map((feature) => <FeatureCard feature={feature} />)}
     </div>
   </Section>
@@ -229,7 +229,7 @@ const greetings = [
       Launched for you — not another tool to figure out.
     </h2>
     <div class="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-      <ol class="flex flex-col gap-6">
+      <ol class="flex flex-col gap-6" data-reveal-group data-reveal-stagger="100">
         {steps.steps.map((step) => <StepRow step={step} />)}
       </ol>
       <div class="rounded-card border border-gray-100 bg-white p-6">
@@ -254,7 +254,7 @@ const greetings = [
     <h2 class="font-display text-h2-mobile max-w-3xl md:text-h2-desktop">
       If a missed call means a missed customer, this is for you.
     </h2>
-    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group data-reveal-stagger="80">
       {industries.map((industry) => <IndustryCard industry={industry} />)}
     </div>
   </Section>

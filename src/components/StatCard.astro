@@ -1,18 +1,29 @@
 ---
 // Augova — StatCard (spec §7.2, dark "missed-call problem" strip).
 // One sourced proof stat: big tabular value, label, and a small linked source.
-// Styled for the dark section (gray-900 surface on ink). Count-up animation is
-// deferred to the animation milestone — the value renders static here.
+// Styled for the dark section (gray-900 surface on ink). Count-up animation
+// (spec §10) on first intersection; reduced motion shows the final value
+// immediately (no JS branching needed — see the script below).
 import type { Stat } from "../data/types";
 
 interface Props {
   stat: Stat;
 }
 const { stat } = Astro.props;
+
+// Split "28%" / "7×" into the animatable number and its literal prefix/suffix.
+const match = stat.value.match(/^(\D*)(\d+(?:\.\d+)?)(\D*)$/);
+const [prefix, numeral, suffix] = match ? [match[1], match[2], match[3]] : ["", stat.value, ""];
 ---
 
 <div class="flex flex-col rounded-card border border-gray-700 bg-gray-900 p-6">
-  <p class="font-display text-h2-mobile tabular-nums text-paper md:text-h2-tablet">
+  <p
+    class="font-display text-h2-mobile tabular-nums text-paper md:text-h2-tablet"
+    data-stat-value
+    data-stat-target={numeral}
+    data-stat-prefix={prefix}
+    data-stat-suffix={suffix}
+  >
     {stat.value}
   </p>
   <p class="font-body text-body-mobile mt-3 text-gray-300">{stat.label}</p>
@@ -25,3 +36,44 @@ const { stat } = Astro.props;
     Source: {stat.source}
   </a>
 </div>
+
+<script>
+  // Hoisted once by Astro; wires every StatCard on the page. Reduced motion:
+  // matchMedia check short-circuits before touching the DOM, so the static
+  // server-rendered value (already correct) is left untouched.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const DURATION = 1200;
+
+    const animate = (el: HTMLElement) => {
+      const target = Number(el.dataset.statTarget);
+      const decimals = (el.dataset.statTarget?.split(".")[1] || "").length;
+      const prefix = el.dataset.statPrefix ?? "";
+      const suffix = el.dataset.statSuffix ?? "";
+      if (!isFinite(target)) return;
+
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / DURATION, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+        const value = (target * eased).toFixed(decimals);
+        el.textContent = `${prefix}${value}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            animate(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    document.querySelectorAll<HTMLElement>("[data-stat-value]").forEach((el) => observer.observe(el));
+  }
+</script>

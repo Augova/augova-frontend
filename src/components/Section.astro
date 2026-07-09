@@ -21,7 +21,12 @@ const eyebrowColor = theme === "dark" ? "text-gray-500" : "text-gray-700";
   <div class="mx-auto max-w-container px-gutter-mobile md:px-gutter">
     {
       eyebrow && (
-        <p class:list={["font-mono uppercase text-eyebrow mb-6", eyebrowColor]}>{eyebrow}</p>
+        <p
+          class:list={["font-mono uppercase text-eyebrow mb-6", eyebrowColor]}
+          data-parallax="0.05"
+        >
+          {eyebrow}
+        </p>
       )
     }
     <slot />

@@ -169,3 +169,10 @@ const jsonLd = {
     }
   });
 </script>
+
+<script>
+  // Animation pass (spec §10) — both drivers are safe no-ops on pages/sections
+  // with no matching elements, so they're loaded once, site-wide, here.
+  import "../lib/reveal.js";
+  import "../lib/parallax.js";
+</script>

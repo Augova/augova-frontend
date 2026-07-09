@@ -3,8 +3,8 @@
 // A stylized live-call dashboard built entirely from CSS/DOM/SVG (NO WebGL —
 // the map hero is the site's only WebGL element). It demonstrates the product
 // where the section's words describe it: a transcript panel, an action-flow
-// strip, and outcome chips. Fully static in M5 (typing + float motion is
-// deferred to the animation milestone); monochrome only, no --signal.
+// strip, and outcome chips. Transcript types in on scroll-in and outcome
+// chips float ambiently (spec §10); monochrome only, no --signal.
 
 // Static transcript lines (illustrative — not a real recording).
 const transcript = [
@@ -25,7 +25,7 @@ const flow = [
 const outcomes = ["Lead captured", "Appointment booked", "SMS sent", "Summary ready"];
 ---
 
-<div class="rounded-card overflow-hidden border border-gray-700 bg-gray-900">
+<div class="rounded-card overflow-hidden border border-gray-700 bg-gray-900" data-live-call>
   <!-- Call header -->
   <div class="flex items-center justify-between border-b border-gray-700 px-5 py-3">
     <div class="flex items-center gap-2.5">
@@ -42,6 +42,8 @@ const outcomes = ["Lead captured", "Appointment booked", "SMS sent", "Summary re
         <div class:list={["max-w-[85%]", t.who === "Caller" ? "self-start" : "self-end"]}>
           <p class="font-mono text-small mb-1 text-gray-500">{t.who}</p>
           <p
+            data-type-line
+            data-type-text={t.line}
             class:list={[
               "font-body text-body-mobile rounded-input px-4 py-2.5",
               t.who === "Caller"
@@ -74,14 +76,53 @@ const outcomes = ["Lead captured", "Appointment booked", "SMS sent", "Summary re
     </ol>
   </div>
 
-  <!-- Outcome chips -->
+  <!-- Outcome chips: ambient float is pure CSS (data-float, global.css) -->
   <div class="flex flex-wrap gap-2 border-t border-gray-700 px-5 py-4">
     {
       outcomes.map((o) => (
-        <span class="font-mono text-small rounded-pill border border-gray-700 px-3 py-1 text-gray-300">
+        <span
+          data-float
+          class="font-mono text-small rounded-pill border border-gray-700 px-3 py-1 text-gray-300"
+        >
           {o}
         </span>
       ))
     }
   </div>
 </div>
+
+<script>
+  // Transcript "types in" on scroll-in (spec §10). Reduced motion: the
+  // matchMedia guard short-circuits before touching any line, so the
+  // server-rendered full text (already correct) is left untouched.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const typeLine = (el: HTMLElement) => {
+      const text = el.dataset.typeText || "";
+      el.textContent = "";
+      let i = 0;
+      const step = () => {
+        i += 1;
+        el.textContent = text.slice(0, i);
+        if (i < text.length) setTimeout(step, 18);
+      };
+      step();
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const lines = Array.from(
+              entry.target.querySelectorAll<HTMLElement>("[data-type-line]"),
+            );
+            lines.forEach((line, i) => setTimeout(() => typeLine(line), i * 500));
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    document.querySelectorAll<HTMLElement>("[data-live-call]").forEach((el) => observer.observe(el));
+  }
+</script>

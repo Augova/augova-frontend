@@ -283,3 +283,45 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Scroll-reveal (spec §10, driven by src/lib/reveal.js) ----
+   The hidden pre-reveal state lives ONLY inside the no-preference query, so
+   reduced-motion users see final content immediately — no JS dependency,
+   no flash. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal],
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity var(--motion-duration-max) var(--motion-ease),
+      transform var(--motion-duration-max) var(--motion-ease);
+  }
+  [data-reveal].is-revealed,
+  .reveal-item.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Ambient float for LiveCallVisual outcome chips (spec §10) — CSS only,
+     no JS. Each chip staggers via nth-child so they don't move in lockstep. */
+  [data-float] {
+    animation: augova-float 3.6s ease-in-out infinite;
+  }
+  [data-float]:nth-child(2n) {
+    animation-delay: 0.4s;
+  }
+  [data-float]:nth-child(3n) {
+    animation-delay: 0.8s;
+  }
+}
+
+@keyframes augova-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}

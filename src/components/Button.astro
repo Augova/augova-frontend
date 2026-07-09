@@ -28,11 +28,14 @@ const {
 
 // min-h-11 = 2.75rem = 44px via Tailwind's default spacing scale (WCAG AA
 // minimum touch target) — not an arbitrary literal.
+// Hover lift (spec §10): translateY(-1px), CSS-only, collapses to nothing
+// under prefers-reduced-motion via the global transition guard.
 const base =
   "inline-flex items-center justify-center gap-2 min-h-11 px-6 " +
   "rounded-button text-label font-body select-none whitespace-nowrap " +
-  "transition-colors duration-motion-min ease-augova " +
-  "disabled:opacity-40 disabled:cursor-not-allowed";
+  "transition-[color,background-color,border-color,transform] duration-motion-min ease-augova " +
+  "hover:-translate-y-px " +
+  "disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0";
 
 const variants = {
   // primary sits on light sections — dark fill, dark (ink) focus ring so the
