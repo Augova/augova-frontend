@@ -1,0 +1,19 @@
+---
+// Augova — /404 (spec §8.4, M7). Astro's file-name convention: src/pages/404.astro
+// is served automatically for unmatched routes. Solid header, one <h1>.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+---
+
+<BaseLayout title="Page not found — Augova" description="That page doesn't exist." noindex>
+  <Section theme="dark" class="text-center">
+    <h1 class="font-display text-h2-mobile mx-auto max-w-xl md:text-h2-desktop">
+      That page doesn't exist.
+    </h1>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <Button variant="inverted" href="/demo">Book a Demo</Button>
+      <Button variant="outline-inverted" href="/">Back home</Button>
+    </div>
+  </Section>
+</BaseLayout>

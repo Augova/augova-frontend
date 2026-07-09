@@ -1,0 +1,85 @@
+---
+// Augova — /about (spec §8.2, M7). Credibility page: why Augova exists, why
+// voice first, how we work, philosophy, and an accountability block (the
+// spec's [[DECISION]] default — no fabricated team/portfolio). Solid header.
+// Exactly one <h1>.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+
+const principles = [
+  {
+    title: "Why Augova exists",
+    body: "Local businesses know AI can help but don't want disconnected tools or experiments. Augova builds practical AI that plugs into how a business already runs.",
+  },
+  {
+    title: "Why voice first",
+    body: "Missed calls are the clearest, most expensive problem a local business has. So we started with the phone.",
+  },
+  {
+    title: "How we work",
+    body: "Workflow audit, approved knowledge, real integrations, tested before launch, monitored after. A managed partner, not software you're left to configure.",
+  },
+  {
+    title: "Our philosophy",
+    body: "Human control, safe handoff, your business rules, measurable outcomes.",
+  },
+];
+
+// Accountability block — spec §8.2 [[DECISION]] default (no names/roles
+// until the team supplies real ones; do not fabricate).
+const accountability = [
+  "30-day proof window",
+  "Outcomes written into the SOW",
+  "Human oversight on every deployment",
+];
+---
+
+<BaseLayout
+  title="About — Augova"
+  description="Augova builds a managed AI voice receptionist that plugs into how your business already runs. Workflow audit, approved knowledge, real integrations, monitored after launch."
+>
+  {/* ---------- Intro (dark) ---------- */}
+  <Section theme="dark" eyebrow="About Augova">
+    <h1 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      AI that fits how your business actually works.
+    </h1>
+  </Section>
+
+  {/* ---------- Principles (light) ---------- */}
+  <Section theme="light" eyebrow="What we believe">
+    <dl class="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+      {
+        principles.map((p) => (
+          <div>
+            <dt class="font-display text-card-title-mobile text-ink md:text-card-title-desktop">
+              {p.title}
+            </dt>
+            <dd class="font-body text-body-mobile mt-3 text-gray-700 md:text-body-desktop">
+              {p.body}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Section>
+
+  {/* ---------- Accountability (dark) ---------- */}
+  <Section theme="dark" eyebrow="How we're accountable">
+    <h2 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      A managed partner, not a black box.
+    </h2>
+    <ul class="mt-10 flex flex-wrap gap-2">
+      {
+        accountability.map((item) => (
+          <li class="font-mono text-small rounded-pill border border-gray-700 px-3 py-1 text-gray-300">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-10">
+      <Button variant="inverted" href="/demo">Book Free Demo</Button>
+    </div>
+  </Section>
+</BaseLayout>

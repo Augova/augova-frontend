@@ -1,0 +1,61 @@
+---
+// Augova — /privacy (spec §8.3, M7). Plain-language PIPEDA-aligned notice.
+// [[PLACEHOLDER content — needs a legal review pass before launch]]. Solid
+// header. Exactly one <h1>.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+const sections = [
+  {
+    title: "What we collect",
+    body: "When you book a demo or submit a form on this site, we collect the information you provide — name, business name, email, phone number, and anything you tell us about your call handling. We also collect standard, cookieless analytics about how the site is used (pages viewed, general location, device type) so we can improve it.",
+  },
+  {
+    title: "Call recording disclosure",
+    body: "If your business trials or uses the Augova voice receptionist, calls handled by the system may be recorded and transcribed to deliver and improve the service. Callers are informed that the call may be recorded, consistent with Canadian telecom (CRTC) requirements. Recordings and transcripts are used only to operate, support, and improve your service.",
+  },
+  {
+    title: "How long we keep it",
+    body: "We keep form submissions and account information for as long as needed to respond to your inquiry or provide the service, and for a reasonable period after in case you follow up. You can ask us to delete your information at any time (see Contact below).",
+  },
+  {
+    title: "How to contact us",
+    body: "For any privacy question, or to access, correct, or delete your information, email us and we'll respond promptly.",
+  },
+  {
+    title: "PIPEDA",
+    body: "Augova is a Canadian business and handles personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA). We collect only what we need, use it only for the purpose it was given, and don't sell it.",
+  },
+];
+---
+
+<BaseLayout title="Privacy — Augova" description="How Augova collects, uses, and protects your information, in plain language and in accordance with PIPEDA.">
+  {/* ---------- Intro (dark) ---------- */}
+  <Section theme="dark" eyebrow="Privacy">
+    <h1 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      Your information, in plain language.
+    </h1>
+    <p class="font-body text-lead-mobile mt-5 max-w-xl text-gray-300 md:text-lead-desktop">
+      This page explains what we collect, why, and how long we keep it. It's
+      written to be read, not decoded.
+    </p>
+  </Section>
+
+  {/* ---------- Sections (light) ---------- */}
+  <Section theme="light">
+    <div class="flex max-w-2xl flex-col gap-10">
+      {
+        sections.map((s) => (
+          <div class="border-b border-gray-100 pb-10 last:border-b-0 last:pb-0">
+            <h2 class="font-display text-card-title-mobile text-ink md:text-card-title-desktop">
+              {s.title}
+            </h2>
+            <p class="font-body text-body-mobile mt-3 text-gray-700 md:text-body-desktop">
+              {s.body}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

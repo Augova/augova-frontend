@@ -1,0 +1,97 @@
+---
+// Augova — /demo (spec §8.1, M7). The real conversion page: Cal.com embed as
+// the primary path, a fallback LeadForm below it. Solid (non-transparent)
+// header — only the homepage hero floats. Exactly one <h1>.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import LeadForm from "../components/LeadForm.astro";
+
+// [[PLACEHOLDER: CAL_COM_LINK]] — set once the real Cal.com event link
+// exists. Until then the embed degrades to a graceful placeholder instead
+// of an empty/broken iframe (same pattern as the placeholder audio demos).
+const CAL_COM_LINK = "";
+
+const nextSteps = [
+  "We review your call workflow.",
+  "We identify your best first call flow.",
+  "We show you a live demo.",
+  "We recommend a setup path.",
+];
+---
+
+<BaseLayout
+  title="Book a Demo — Augova"
+  description="Tell us how your business handles calls today, and we'll show you a live demo built around it. A 30-minute call, no obligation."
+>
+  {/* ---------- Book (dark) ---------- */}
+  <Section theme="dark" eyebrow="Book a demo" id="book">
+    <h1 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      See Augova answer your calls.
+    </h1>
+    <p class="font-body text-lead-mobile mt-5 max-w-xl text-gray-300 md:text-lead-desktop">
+      Tell us how your business handles calls today, and we'll show you a live
+      demo built around it.
+    </p>
+
+    <div class="mt-10 max-w-2xl">
+      {
+        CAL_COM_LINK ? (
+          <div class="rounded-card overflow-hidden border border-gray-700">
+            <iframe
+              src={CAL_COM_LINK}
+              title="Book a demo call"
+              class="h-[700px] w-full"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="rounded-card border border-gray-700 bg-gray-900 p-8 text-center">
+            <p class="font-mono text-small uppercase text-gray-500">Booking</p>
+            <p class="font-body text-body-mobile mt-3 text-gray-300 md:text-body-desktop">
+              Online scheduling is coming soon. Use the form below and we'll
+              reach out to set up your demo call.
+            </p>
+          </div>
+        )
+      }
+    </div>
+
+    <p class="font-body text-small mt-6 max-w-xl text-gray-500">
+      A 30-minute call, no obligation. Anything you share stays private.
+    </p>
+  </Section>
+
+  {/* ---------- What happens next (light) ---------- */}
+  <Section theme="light" eyebrow="What happens next">
+    <h2 class="font-display text-h2-mobile max-w-2xl md:text-h2-desktop">
+      From first call to a working demo.
+    </h2>
+    <ol class="mt-10 flex max-w-2xl flex-col gap-6">
+      {
+        nextSteps.map((step, i) => (
+          <li class="flex gap-5 md:gap-6">
+            <span
+              aria-hidden="true"
+              class="font-mono text-card-title-mobile shrink-0 tabular-nums text-gray-500 md:text-card-title-desktop"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p class="font-body text-body-mobile flex-1 border-b border-gray-100 pb-6 text-gray-700 md:text-body-desktop">
+              {step}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  {/* ---------- Fallback form (dark) ---------- */}
+  <Section theme="dark" eyebrow="Prefer to write instead?">
+    <h2 class="font-display text-h2-mobile max-w-xl md:text-h2-desktop">
+      Request a callback.
+    </h2>
+    <div class="mt-10">
+      <LeadForm />
+    </div>
+  </Section>
+</BaseLayout>
