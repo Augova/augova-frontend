@@ -33,6 +33,11 @@ const industries = industriesData as Industry[];
 const faqs = faqData as Faq[];
 const demos = demosData as Demo[];
 
+// §7.4 live-number CTA — [[PLACEHOLDER: DEMO_NUMBER]]. Row is hidden
+// gracefully whenever the env var is unset, so an absent number never
+// ships a dead link (spec §7.4).
+const demoNumber = import.meta.env.PUBLIC_DEMO_NUMBER || "";
+
 // §7.3 — four capability blocks (final copy).
 const capabilities = [
   {
@@ -127,6 +132,20 @@ const greetings = [
     <div class="mt-10 grid gap-4 lg:grid-cols-3">
       {demos.map((demo) => <AudioDemoPlayer demo={demo} />)}
     </div>
+    {
+      demoNumber && (
+        <p class="font-body text-body-mobile mt-8 text-gray-300 md:text-body-desktop">
+          Call it yourself:{" "}
+          <a
+            href={`tel:${demoNumber.replace(/[^\d+]/g, "")}`}
+            data-demo-number
+            class="font-mono text-paper underline decoration-gray-700 underline-offset-4 hover:decoration-paper"
+          >
+            {demoNumber}
+          </a>
+        </p>
+      )
+    }
   </Section>
 
   {/* ---------- 7.5 ROI moment (light) ---------- */}
@@ -157,7 +176,7 @@ const greetings = [
       one captured job or patient can cover it.
     </p>
     <div class="mt-8">
-      <Button variant="primary" href="/demo">Book Free Demo</Button>
+      <Button variant="primary" href="/demo" analyticsSection="roi">Book Free Demo</Button>
     </div>
   </Section>
 
@@ -260,7 +279,7 @@ const greetings = [
       business.
     </p>
     <div class="mt-8">
-      <Button variant="inverted" href="/demo">Book Free Demo</Button>
+      <Button variant="inverted" href="/demo" analyticsSection="final-cta">Book Free Demo</Button>
     </div>
     <div class="mx-auto mt-12 max-w-xl border-t border-gray-700 pt-10">
       <p class="font-mono text-small mb-6 uppercase text-gray-500">Or request a callback</p>
@@ -268,3 +287,11 @@ const greetings = [
     </div>
   </Section>
 </BaseLayout>
+
+<script>
+  import { track } from "../lib/analytics";
+
+  document.querySelectorAll("[data-demo-number]").forEach((el) => {
+    el.addEventListener("click", () => track("demo_number_click"));
+  });
+</script>

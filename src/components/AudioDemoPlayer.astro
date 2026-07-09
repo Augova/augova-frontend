@@ -48,25 +48,27 @@ const { demo } = Astro.props;
 </div>
 
 <script>
+  import { track } from "../lib/analytics";
+
   // Hoisted once by Astro; wires every AudioDemoPlayer on the page.
-  const fmt = (s) => {
+  const fmt = (s: number) => {
     if (!isFinite(s)) return "0:00";
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60).toString().padStart(2, "0");
     return `${m}:${sec}`;
   };
 
-  document.querySelectorAll("[data-audio-player]").forEach((root) => {
-    const audio = root.querySelector("[data-audio-el]");
-    const btn = root.querySelector("[data-audio-toggle]");
-    const bar = root.querySelector("[data-audio-bar]");
-    const time = root.querySelector("[data-audio-time]");
-    const iconPlay = root.querySelector("[data-icon-play]");
-    const iconPause = root.querySelector("[data-icon-pause]");
+  document.querySelectorAll<HTMLElement>("[data-audio-player]").forEach((root) => {
+    const audio = root.querySelector<HTMLAudioElement>("[data-audio-el]");
+    const btn = root.querySelector<HTMLButtonElement>("[data-audio-toggle]");
+    const bar = root.querySelector<HTMLElement>("[data-audio-bar]");
+    const time = root.querySelector<HTMLElement>("[data-audio-time]");
+    const iconPlay = root.querySelector<HTMLElement>("[data-icon-play]");
+    const iconPause = root.querySelector<HTMLElement>("[data-icon-pause]");
     if (!audio || !btn || !bar || !time || !iconPlay || !iconPause) return;
 
     const label = btn.dataset.label || "";
-    const setPlaying = (playing) => {
+    const setPlaying = (playing: boolean) => {
       iconPlay.classList.toggle("hidden", playing);
       iconPause.classList.toggle("hidden", !playing);
       btn.setAttribute("aria-label", `${playing ? "Pause" : "Play"}: ${label}`);
@@ -76,7 +78,7 @@ const { demo } = Astro.props;
       if (audio.paused) {
         // One clip at a time across the whole page.
         document
-          .querySelectorAll("[data-audio-el]")
+          .querySelectorAll<HTMLAudioElement>("[data-audio-el]")
           .forEach((a) => { if (a !== audio) a.pause(); });
         audio.play().catch(() => { /* placeholder file missing — ignore */ });
       } else {
@@ -84,12 +86,16 @@ const { demo } = Astro.props;
       }
     });
 
-    audio.addEventListener("play", () => setPlaying(true));
+    audio.addEventListener("play", () => {
+      setPlaying(true);
+      track("audio_demo_play", { label });
+    });
     audio.addEventListener("pause", () => setPlaying(false));
     audio.addEventListener("ended", () => {
       setPlaying(false);
       bar.style.width = "0%";
       time.textContent = "0:00";
+      track("audio_demo_complete", { label });
     });
     audio.addEventListener("timeupdate", () => {
       const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;

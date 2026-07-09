@@ -11,6 +11,9 @@ import StickyMobileCTA from "../components/StickyMobileCTA.astro";
 interface Props {
   title: string;
   description?: string;
+  /** Defaults to /og/default.png — a real file must always exist here so
+   *  og:image never 404s (spec §12). */
+  ogImage?: string;
   /** Keep dev/preview pages (e.g. /styleguide) out of search results. */
   noindex?: boolean;
   /** Homepage sets this true so the header floats transparent over the dark
@@ -24,10 +27,56 @@ interface Props {
 const {
   title,
   description,
+  ogImage = "/og/default.png",
   noindex = false,
   transparentHeader = false,
   bare = false,
 } = Astro.props;
+
+// Cloudflare Web Analytics (spec §11) — cookieless pageview beacon, no
+// consent banner needed. [[PLACEHOLDER]] until the site has a real CF
+// Pages deployment/token; the tag is skipped entirely if unset so no
+// broken/empty beacon call ships.
+const cfBeaconToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN;
+
+// Canonical + OG/Twitter (spec §12). Astro.site is the configured production
+// domain (astro.config.mjs); Astro.url.pathname keeps query/hash off canonical.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+// LocalBusiness + Service JSON-LD (spec §12) — rendered site-wide from
+// BaseLayout, not per-page, since it describes the business itself. York
+// Region areaServed per spec. Canadian framing only — no HIPAA/SOC2/US
+// claims, no pricing (hard rules, §4).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Augova",
+  url: Astro.site?.toString(),
+  areaServed: [
+    "Richmond Hill",
+    "Markham",
+    "Vaughan",
+    "Aurora",
+    "Newmarket",
+    "Barrie",
+  ].map((name) => ({ "@type": "City", name })),
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "ON",
+    addressCountry: "CA",
+  },
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "AI Voice Receptionist",
+      description:
+        "A managed AI voice receptionist that answers, books, and follows up on every business call.",
+      areaServed: "York Region, Ontario, Canada",
+    },
+  },
+};
 ---
 
 <html lang="en">
@@ -37,6 +86,19 @@ const {
     <meta name="generator" content={Astro.generator} />
     {description && <meta name="description" content={description} />}
     {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph + Twitter card (spec §12) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Augova" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImageURL} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -57,10 +119,22 @@ const {
       crossorigin
     />
 
-    <!-- Structured data — pages inject via this slot (empty until SEO, M11). -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <!-- Per-page structured data (e.g. FAQPage) can extend via this slot. -->
     <slot name="jsonld" />
 
     <title>{title}</title>
+
+    {
+      cfBeaconToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
+        />
+      )
+    }
   </head>
   <body>
     {
@@ -81,3 +155,17 @@ const {
     }
   </body>
 </html>
+
+<script>
+  // Delegated demo_cta_click (spec §11) — one listener for every Button
+  // that carries data-analytics-section, instead of wiring each static
+  // Button instance individually.
+  import { track } from "../lib/analytics";
+
+  document.addEventListener("click", (e) => {
+    const trigger = (e.target as HTMLElement)?.closest<HTMLElement>("[data-analytics-section]");
+    if (trigger) {
+      track("demo_cta_click", { section: trigger.dataset.analyticsSection ?? "" });
+    }
+  });
+</script>

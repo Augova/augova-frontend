@@ -1,12 +1,27 @@
 ---
-// Augova — LeadForm (spec §7.11 fallback path; reused on /demo later).
-// M5 renders the SHELL only: real fields, labels, autocomplete, and mobile
-// keyboards, but submission is NOT wired — the Cloudflare Pages Function +
-// Turnstile land in the forms milestone. Until then a tiny handler intercepts
-// submit and points the user at the primary "Book Free Demo" path, so the form
-// never does anything broken or misleading. Styled for the dark final-CTA
-// section. One primary action lives outside this form (the Book Free Demo
-// link); this is the secondary/inline path.
+// Augova — LeadForm (spec §7.11 fallback path; reused on /demo). Real
+// fields, labels, autocomplete, mobile keyboards, plus (M8) live submission:
+// Turnstile verification -> POST /functions/submit -> inline success/error,
+// no page reload. Styled for the dark final-CTA section. One primary action
+// lives outside this form (the Book Free Demo link); this is the
+// secondary/inline path.
+//
+// PUBLIC_TURNSTILE_SITE_KEY is [[PLACEHOLDER]] (see .env.example). Until
+// it's set, the form can't be verified server-side, so it falls back to the
+// M5 placeholder behavior (intercept + point at the primary Book Demo path)
+// instead of submitting something that would silently fail Turnstile.
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+
+const industries = [
+  "Home Services",
+  "Clinics & Wellness",
+  "Professional Services",
+  "Automotive",
+  "Real Estate & Property",
+  "Retail & Hospitality",
+  "Other",
+];
+
 const fieldBase =
   "w-full min-h-11 rounded-input border border-gray-700 bg-ink px-4 py-2.5 font-body text-body-mobile text-paper placeholder:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper";
 const labelBase = "font-body text-label mb-1.5 block text-gray-300";
@@ -35,13 +50,28 @@ const labelBase = "font-body text-label mb-1.5 block text-gray-300";
   </div>
 
   <div>
-    <label for="lf-details" class={labelBase}>How do you handle calls today?</label>
+    <label for="lf-industry" class={labelBase}>Industry</label>
+    <select id="lf-industry" name="industry" class={fieldBase}>
+      <option value="">Select one</option>
+      {industries.map((i) => <option value={i}>{i}</option>)}
+    </select>
+  </div>
+
+  <div>
+    <label for="lf-details" class={labelBase}>What should it handle? <span class="text-gray-500">(optional)</span></label>
     <textarea id="lf-details" name="details" rows="3" class={`${fieldBase} resize-y`}></textarea>
   </div>
 
+  {
+    turnstileSiteKey && (
+      <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-callback="onLeadFormTurnstile" />
+    )
+  }
+
   <button
     type="submit"
-    class="font-body text-label rounded-button min-h-11 select-none bg-paper px-6 text-ink transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+    data-lead-submit
+    class="font-body text-label rounded-button min-h-11 select-none bg-paper px-6 text-ink transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper disabled:cursor-not-allowed disabled:opacity-40"
   >
     Request a callback
   </button>
@@ -49,18 +79,85 @@ const labelBase = "font-body text-label mb-1.5 block text-gray-300";
   <p data-lead-status role="status" aria-live="polite" class="font-body text-small min-h-5 text-gray-300"></p>
 </form>
 
+{
+  turnstileSiteKey && (
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    />
+  )
+}
+
 <script>
-  // M5 placeholder: the form isn't wired to a backend yet. Intercept submit,
-  // keep the user's data on-page, and route them to the primary demo path.
-  // Replaced by the real Pages Function handler in the forms milestone.
-  document.querySelectorAll("[data-lead-form]").forEach((form) => {
-    const status = form.querySelector("[data-lead-status]");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (status) {
-        status.textContent =
-          "Thanks — online booking is coming soon. Please use “Book Free Demo” above and we’ll set up your demo call.";
-      }
+  import { track } from "../lib/analytics";
+
+  // Turnstile site key present -> real end-to-end submission (verify ->
+  // /functions/submit -> inline success/error). Absent -> M5 placeholder
+  // behavior: nothing is verifiable server-side yet, so don't pretend to
+  // submit; point the visitor at the primary Book Demo path instead.
+  const hasTurnstile = document.querySelector("[data-lead-form] .cf-turnstile") !== null;
+
+  if (!hasTurnstile) {
+    document.querySelectorAll("[data-lead-form]").forEach((form) => {
+      const status = form.querySelector("[data-lead-status]");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (status) {
+          status.textContent =
+            "Thanks — online booking is coming soon. Please use “Book Free Demo” above and we’ll set up your demo call.";
+        }
+      });
     });
-  });
+  } else {
+    document.querySelectorAll("[data-lead-form]").forEach((form) => {
+      const status = form.querySelector("[data-lead-status]");
+      const submitBtn = form.querySelector("[data-lead-submit]");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form as HTMLFormElement);
+        const turnstileToken = formData.get("cf-turnstile-response");
+
+        if (!turnstileToken) {
+          if (status) status.textContent = "Please complete the verification check above.";
+          return;
+        }
+
+        if (submitBtn) (submitBtn as HTMLButtonElement).disabled = true;
+        if (status) status.textContent = "Sending…";
+
+        try {
+          const res = await fetch("/functions/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.get("name"),
+              business: formData.get("business"),
+              email: formData.get("email"),
+              phone: formData.get("phone"),
+              industry: formData.get("industry"),
+              details: formData.get("details"),
+              turnstileToken,
+            }),
+          });
+          const result = await res.json();
+
+          if (result.ok) {
+            track("form_submit", { form: "lead-form-fallback" });
+            if (status) status.textContent = "Thanks — we've got your details and will be in touch shortly.";
+            (form as HTMLFormElement).reset();
+            if (window.turnstile) window.turnstile.reset();
+          } else {
+            if (status) status.textContent = result.error || "Something went wrong. Please try again.";
+          }
+        } catch {
+          if (status) status.textContent = "Something went wrong. Please try again.";
+        } finally {
+          if (submitBtn) (submitBtn as HTMLButtonElement).disabled = false;
+        }
+      });
+    });
+  }
 </script>

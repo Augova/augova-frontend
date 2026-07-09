@@ -11,6 +11,10 @@ interface Props {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   class?: string;
+  /** Book Demo CTAs pass their section name (spec §11 `demo_cta_click`);
+   *  a delegated listener in BaseLayout reads this attribute — Button
+   *  itself stays a static component with no client JS of its own. */
+  analyticsSection?: string;
 }
 
 const {
@@ -19,6 +23,7 @@ const {
   type = "button",
   disabled = false,
   class: className = "",
+  analyticsSection,
 } = Astro.props;
 
 // min-h-11 = 2.75rem = 44px via Tailwind's default spacing scale (WCAG AA
@@ -63,7 +68,7 @@ const classes = [base, variants[variant], className].join(" ");
 
 {
   href && !disabled ? (
-    <a href={href} class={classes}>
+    <a href={href} class={classes} data-analytics-section={analyticsSection}>
       <slot />
     </a>
   ) : (
