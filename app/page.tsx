@@ -19,25 +19,6 @@ export default function Home() {
       <section id="hero" className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-20">
         <ShaderAnimation />
 
-        {/* Microtext Layer */}
-        <div
-          className="absolute inset-0 ascii-texture z-0 font-label-mono text-[10px] leading-tight select-none overflow-hidden p-4"
-          style={{ color: "rgba(248, 243, 232, 0.72)" }}
-        >
-          01010101 01010101 01010101 AUGOVA_ENGINE_V2.0 // INITIALIZING_NEURAL_VOICE_LAYER... [OK]
-          <br />
-          CALL_LOGS: +1 555-0192 (SUCCESS), +1 555-0283 (SUCCESS), +1 555-0374 (SUCCESS)
-          <br />
-          LATENCY: 12ms // THROUGHPUT: 4.8k CALLS/SEC // VOX_GEN: STABLE
-          <br />
-          ......................................................................
-          <br />
-          SYSTEM_STATUS: NOMINAL_OPERATION // REGION: GLOBAL_EDGE_CLUSTER_04
-          <br />
-          01010101 01010101 01010101 AUGOVA_ENGINE_V2.0 // INITIALIZING_NEURAL_VOICE_LAYER... [OK]
-          <br />
-        </div>
-
         <div className="relative z-10 max-w-4xl asymmetric-gutter">
           <span
             className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block opacity-100"
@@ -181,7 +162,7 @@ export default function Home() {
             <span className="material-symbols-outlined text-primary mb-6 text-[32px]">sync</span>
             <h4 className="font-body-lg font-bold text-primary mb-2">CRM Integration</h4>
             <p className="font-body-md text-on-surface-variant">
-              Direct connections to HubSpot, Salesforce, and 3,000+ apps via Zapier.
+              Native CRM sync with mid-call lookups and writes, plus custom webhook and Zapier workflows.
             </p>
           </div>
           <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
@@ -193,9 +174,9 @@ export default function Home() {
           </div>
           <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
             <span className="material-symbols-outlined text-primary mb-6 text-[32px]">security</span>
-            <h4 className="font-body-lg font-bold text-primary mb-2">Enterprise Security</h4>
+            <h4 className="font-body-lg font-bold text-primary mb-2">Secure by Default</h4>
             <p className="font-body-md text-on-surface-variant">
-              SOC2 compliant data handling and encrypted transmission protocols.
+              TLS encryption in transit, PIPEDA-aligned data handling, and audit trails on every call.
             </p>
           </div>
         </div>
@@ -241,27 +222,27 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-border-subtle pt-12">
           <div>
-            <h3 className="font-body-lg font-bold text-primary mb-6">Clinics</h3>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Dental Practices</h3>
             <p className="font-body-md text-on-surface-variant">
-              Automated appointment scheduling and patient intake without HIPAA violations.
+              Books new-patient appointments live and confirms them out loud before they&apos;re locked in.
             </p>
           </div>
           <div>
-            <h3 className="font-body-lg font-bold text-primary mb-6">Agencies</h3>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Home Services &amp; Trades</h3>
             <p className="font-body-md text-on-surface-variant">
-              Filter low-quality leads and book discovery calls while you focus on creative work.
+              Triages emergency calls and books the job while your hands are on the tools, not the phone.
             </p>
           </div>
           <div>
-            <h3 className="font-body-lg font-bold text-primary mb-6">Trades</h3>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Medical &amp; Specialist Clinics</h3>
             <p className="font-body-md text-on-surface-variant">
-              Plumbers, electricians, and contractors answer calls even when they are on a ladder.
+              Handles intake and routine questions, and routes anything urgent straight to your team.
             </p>
           </div>
           <div>
-            <h3 className="font-body-lg font-bold text-primary mb-6">Local Biz</h3>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Legal Practices</h3>
             <p className="font-body-md text-on-surface-variant">
-              Handling inventory questions and reservation requests during peak traffic hours.
+              Captures new-client intake and case details before the caller tries the next firm.
             </p>
           </div>
         </div>

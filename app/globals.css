@@ -111,12 +111,6 @@ body {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-.ascii-texture {
-  mask-image: radial-gradient(circle, white 0%, transparent 80%);
-  opacity: 0.1;
-  pointer-events: none;
-}
-
 .ascii-overlay {
   mask-image: radial-gradient(circle, white 0%, transparent 80%);
   opacity: 0.08;
