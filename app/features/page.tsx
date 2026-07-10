@@ -194,20 +194,6 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="py-section-gap px-margin-desktop bg-surface-elevated">
-        <div className="border border-border-subtle bg-surface-elevated/90 p-8 md:p-12">
-          <div className="font-label-mono text-label-mono mb-4" style={{ color: "#81A6C6" }}>
-            Delivery Summary
-          </div>
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
-            The catalogue is designed for clarity, not complexity.
-          </h2>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
-            Each capability is categorized by packaging and readiness so the team can decide quickly what belongs in
-            the product, what is included, and what is still a roadmap item.
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

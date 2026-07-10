@@ -1,48 +1,69 @@
+import type { Metadata } from "next";
+import ScrollReveal from "@/components/ScrollReveal";
+
+export const metadata: Metadata = {
+  title: "About Us | Augova",
+  description: "Why Augova exists, what we build, and where we're taking it.",
+};
+
 export default function AboutPage() {
   return (
     <main className="pt-20">
+      <ScrollReveal />
+
       <section className="pt-10 pb-section-gap px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">About Us</div>
-          <h1 className="font-headline-lg text-headline-lg text-primary mb-8">
-            An assistant for your front desk, not a replacement for it.
+          <h1 className="font-headline-lg text-headline-lg text-primary mb-6">
+            We started Augova because a ringing phone shouldn&apos;t be where good businesses lose money.
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
-            Augova builds AI receptionists for businesses that cannot afford to miss a call. We designed it to work
-            alongside your team during the moments they are already stretched thin — not to take their place.
+            We&apos;re a small team building one thing well: an AI receptionist that answers, qualifies, books, and
+            hands off — so the business behind it stops paying for calls it never picked up.
           </p>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter border-t border-border-subtle pt-12">
-          <div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Confirms before it commits</h3>
-            <p className="font-body-md text-on-surface-variant">
-              Every booking is read back to the caller and confirmed out loud before it&apos;s locked in.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Knows when to hand off</h3>
-            <p className="font-body-md text-on-surface-variant">
-              Anything outside its knowledge base or judgment is passed to your team with full context, not guessed
-              at.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Fails safely</h3>
-            <p className="font-body-md text-on-surface-variant">
-              If something goes wrong, calls fail over to your existing phone lines — you are never worse off than
-              before.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-16 max-w-3xl">
-          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-6">
-            Speaks your customers&apos; language
+      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+        <div className="max-w-3xl">
+          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Our mission</div>
+          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
+            Turn missed calls back into revenue.
           </h2>
           <p className="font-body-md text-on-surface-variant">
-            Natural, multilingual conversation means callers are met in the language they&apos;re most comfortable
-            in — not routed through a rigid, English-only phone tree.
+            A missed call isn&apos;t a small thing — it&apos;s a customer who called, waited, and left. We built
+            Augova to close that gap: more calls answered, more leads captured, more appointments booked, less
+            money spent doing it. If a feature doesn&apos;t move one of those numbers, we don&apos;t ship it.
+          </p>
+        </div>
+      </section>
+
+      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+        <div className="max-w-3xl">
+          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">How we work</div>
+          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
+            Your team, not your replacement.
+          </h2>
+          <p className="font-body-md text-on-surface-variant">
+            We treat every call the way we&apos;d want ours handled: confirmed out loud before it&apos;s booked,
+            handed to a human the moment it gets uncertain, and never left worse off if something breaks. That&apos;s
+            not a compliance checkbox for us — a few of us have run small businesses ourselves, and we know exactly
+            what a dropped call costs.
+          </p>
+        </div>
+      </section>
+
+      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+        <div className="max-w-3xl">
+          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Where we&apos;re headed</div>
+          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
+            The phone is the start, not the whole plan.
+          </h2>
+          <p className="font-body-md text-on-surface-variant">
+            We&apos;re starting with voice because it&apos;s the highest-value conversation most SMBs have and the
+            easiest one to lose. Once that&apos;s working for you, the same team and the same discipline extend to
+            text, follow-up, and the rest of the busywork behind the counter — built only when we can deliver it
+            properly, not before.
           </p>
         </div>
       </section>
