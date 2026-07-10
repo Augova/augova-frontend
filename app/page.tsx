@@ -112,24 +112,36 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
           <div className="relative group">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              01
+            </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Caller Dials</h3>
             <p className="font-body-md text-on-surface-variant">
               Your existing business number is bridged to Augova&apos;s neural processing layer.
             </p>
           </div>
           <div className="relative group md:mt-24">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              02
+            </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">AI Pick Up</h3>
             <p className="font-body-md text-on-surface-variant">
               The AI answers within 10ms using a voice profile tailored to your brand identity.
             </p>
           </div>
           <div className="relative group">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              03
+            </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Smart Intake</h3>
             <p className="font-body-md text-on-surface-variant">
               Natural conversation filters the lead, books the slot, or handles the support ticket.
             </p>
           </div>
           <div className="relative group md:mt-24">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              04
+            </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Data Sync</h3>
             <p className="font-body-md text-on-surface-variant">
               Logs and results are instantly pushed to your CRM or internal dashboard via webhook.
@@ -152,11 +164,8 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
           <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
-                <span className="material-symbols-outlined text-terminal-green text-[22px]">search</span>
-              </div>
-              <span className="font-label-mono text-label-mono text-on-surface-variant">01</span>
+            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-terminal-green text-[22px]">search</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -165,11 +174,8 @@ export default function Home() {
             </p>
           </div>
           <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
-                <span className="material-symbols-outlined text-terminal-green text-[22px]">menu_book</span>
-              </div>
-              <span className="font-label-mono text-label-mono text-on-surface-variant">02</span>
+            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-terminal-green text-[22px]">menu_book</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -178,13 +184,10 @@ export default function Home() {
             </p>
           </div>
           <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
-                <span className="material-symbols-outlined text-terminal-green text-[22px]">
-                  integration_instructions
-                </span>
-              </div>
-              <span className="font-label-mono text-label-mono text-on-surface-variant">03</span>
+            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-terminal-green text-[22px]">
+                integration_instructions
+              </span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">System Integration</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -192,11 +195,8 @@ export default function Home() {
             </p>
           </div>
           <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
-                <span className="material-symbols-outlined text-terminal-green text-[22px]">phonelink_ring</span>
-              </div>
-              <span className="font-label-mono text-label-mono text-on-surface-variant">04</span>
+            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-terminal-green text-[22px]">phonelink_ring</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -205,11 +205,8 @@ export default function Home() {
             </p>
           </div>
           <div className="border border-terminal-green p-6 flex flex-col bg-surface-elevated/40">
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 border border-terminal-green flex items-center justify-center bg-terminal-green/10">
-                <span className="material-symbols-outlined text-terminal-green text-[22px]">rocket_launch</span>
-              </div>
-              <span className="font-label-mono text-label-mono text-terminal-green">05</span>
+            <div className="w-12 h-12 border border-terminal-green flex items-center justify-center bg-terminal-green/10 mb-6">
+              <span className="material-symbols-outlined text-terminal-green text-[22px]">rocket_launch</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Go Live &amp; Improve</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -300,25 +297,14 @@ export default function Home() {
 
       {/* Use Cases Section */}
       <section className="py-section-gap px-margin-desktop" id="use-cases">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-          <div className="max-w-2xl">
-            <span
-              className="font-label-mono text-label-mono text-primary uppercase mb-4 inline-block"
-              style={{ color: "#659287" }}
-            >
-              // USE CASES
-            </span>
-            <h2 className="font-headline-lg text-headline-lg text-primary">Tailored for Local Scale</h2>
-          </div>
-          <div className="font-label-mono text-on-surface-variant text-[10px] uppercase text-right leading-relaxed hidden md:block">
-            PROTOCOL_MATCH_01: CLINICAL_HEALTH
-            <br />
-            PROTOCOL_MATCH_02: CREATIVE_AGENCY
-            <br />
-            PROTOCOL_MATCH_03: SKILLED_TRADES
-            <br />
-            PROTOCOL_MATCH_04: LOCAL_RETAIL
-          </div>
+        <div className="max-w-2xl mb-12">
+          <span
+            className="font-label-mono text-label-mono text-primary uppercase mb-4 inline-block"
+            style={{ color: "#659287" }}
+          >
+            // USE CASES
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-primary">Tailored for Local Scale</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-border-subtle pt-12">
           <div>
