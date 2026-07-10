@@ -8,7 +8,7 @@ describe("Navbar", () => {
     // Each link is rendered twice by design: once in the desktop nav, once in the
     // mobile menu duplicate. jsdom doesn't hide the "hidden" one from the a11y tree.
     expect(screen.getAllByRole("link", { name: "AI Receptionist" }).length).toBeGreaterThan(0);
-    expect(screen.getAllByRole("link", { name: "How It Works" }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link", { name: "Features" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "Industries" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "About Us" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "Contact Us" }).length).toBeGreaterThan(0);

@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 export default function FeaturesPage() {
   return (
     <main>
       <section className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-24">
+        <DottedSurface />
         <div className="absolute inset-0 ascii-overlay z-0 font-label-mono text-[10px] leading-tight select-none overflow-hidden p-6">
           01010101 VOICE_AI_CATALOGUE // PACKAGING_AND_READINESS_LAYER
           <br />
@@ -41,6 +43,73 @@ export default function FeaturesPage() {
               <span className="material-symbols-outlined">view_list</span>
               Explore the Catalogue
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Onboarding Process */}
+      <section className="py-section-gap px-margin-desktop bg-[#81A6C6]" id="process">
+        <div className="mb-12 max-w-2xl">
+          <div className="font-label-mono text-label-mono text-black uppercase mb-4">Process</div>
+          <h2 className="font-headline-lg text-headline-lg text-black mb-6">
+            Launch your AI receptionist without rebuilding your business.
+          </h2>
+          <p className="font-body-md text-body-md text-black/70">
+            Augova is not just software you turn on and hope for the best. We set up the workflow, connect your
+            systems, test real scenarios, and keep improving the receptionist after launch.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">search</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              We learn how your calls work today: who calls, why they call, what your team asks, and when humans
+              need to step in.
+            </p>
+          </div>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">menu_book</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              We load your FAQs, services, pricing rules, hours, policies, locations, staff instructions, and
+              escalation rules.
+            </p>
+          </div>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">
+                integration_instructions
+              </span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-3">System Integration</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
+            </p>
+          </div>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">phonelink_ring</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              We run realistic test calls before launch, including bookings, FAQs, urgent calls, confused callers,
+              and edge cases.
+            </p>
+          </div>
+          <div className="border border-terminal-green bg-background p-6 flex flex-col">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">rocket_launch</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-3">Go Live &amp; Improve</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
+              The AI starts answering real calls. We monitor performance, review outcomes, and refine scripts, rules,
+              and workflows.
+            </p>
           </div>
         </div>
       </section>

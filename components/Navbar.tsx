@@ -6,7 +6,7 @@ import { useScrolled } from "@/hooks/useScrolled";
 
 const NAV_LINKS = [
   { label: "AI Receptionist", href: "/#hero" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Features", href: "/features" },
   { label: "Industries", href: "/industries" },
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
