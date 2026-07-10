@@ -2,6 +2,14 @@ import Link from "next/link";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
 import ScrollReveal from "@/components/ScrollReveal";
 
+const LANGUAGES = [
+  { name: "English", native: "", lang: "en" },
+  { name: "Mandarin", native: "普通话", lang: "zh-CN" },
+  { name: "Cantonese", native: "廣東話", lang: "zh-HK" },
+  { name: "Farsi", native: "فارسی", lang: "fa" },
+  { name: "Russian", native: "Русский", lang: "ru" },
+];
+
 export default function Home() {
   return (
     <>
@@ -191,6 +199,33 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Multilingual Section */}
+      <section className="py-section-gap px-margin-desktop bg-[#C9996B] flex flex-col items-center text-center">
+        <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-background mb-4">
+          Speaks your customers&apos; language
+        </h2>
+        <p className="font-body-md text-background/80 max-w-3xl mb-8">
+          Natural, multilingual conversation means your callers are met in the language they actually think in — not
+          routed through a rigid, English-only phone tree. For clinics, firms, and shops serving diverse communities,
+          that is the difference between a booked appointment and a hang-up.
+        </p>
+        <ul className="flex flex-wrap justify-center gap-3">
+          {LANGUAGES.map((language) => (
+            <li
+              key={language.name}
+              className="border border-background/20 px-4 py-2 flex items-baseline gap-3 bg-background/10"
+            >
+              <span className="font-body-md text-background font-semibold">{language.name}</span>
+              {language.native && (
+                <span className="font-label-mono text-label-mono text-background/70" lang={language.lang}>
+                  {language.native}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Use Cases Section */}

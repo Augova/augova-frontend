@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Industries | Augova",
@@ -76,14 +75,6 @@ const PRIMARY: Industry[] = [
   },
 ];
 
-const LANGUAGES = [
-  { name: "English", native: "", lang: "en" },
-  { name: "Mandarin", native: "普通话", lang: "zh-CN" },
-  { name: "Cantonese", native: "廣東話", lang: "zh-HK" },
-  { name: "Farsi", native: "فارسی", lang: "fa" },
-  { name: "Russian", native: "Русский", lang: "ru" },
-];
-
 const SECONDARY: Industry[] = [
   {
     icon: "gavel",
@@ -125,12 +116,12 @@ const SECONDARY: Industry[] = [
 function IndustryCard({ industry, featured = false }: { industry: Industry; featured?: boolean }) {
   return (
     <div
-      className={`border border-border-subtle p-8 hover:bg-surface-elevated transition-colors group flex flex-col ${
+      className={`border border-[#C9996B]/30 hover:border-[#C9996B] p-8 hover:bg-surface-elevated transition-colors group flex flex-col ${
         featured ? "bg-surface-elevated/40" : ""
       }`}
     >
       <span
-        className="material-symbols-outlined text-[#DCCFC0] mb-6 text-[32px] group-hover:text-primary transition-colors"
+        className="material-symbols-outlined text-[#C9996B] mb-6 text-[32px] group-hover:text-primary transition-colors"
         aria-hidden="true"
       >
         {industry.icon}
@@ -168,7 +159,7 @@ export default function IndustriesPage() {
         </div>
 
         <div className="mb-16">
-          <div className="font-label-mono text-label-mono text-[#DCCFC0] uppercase mb-6 border-t border-border-subtle pt-6">
+          <div className="font-label-mono text-label-mono text-[#C9996B] uppercase mb-6 border-t border-border-subtle pt-6">
             Where we focus first
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
@@ -179,7 +170,7 @@ export default function IndustriesPage() {
         </div>
 
         <div className="mb-16">
-          <div className="font-label-mono text-label-mono text-[#DCCFC0] uppercase mb-6 border-t border-border-subtle pt-6">
+          <div className="font-label-mono text-label-mono text-[#C9996B] uppercase mb-6 border-t border-border-subtle pt-6">
             Also a strong fit
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
@@ -187,38 +178,6 @@ export default function IndustriesPage() {
               <IndustryCard key={industry.name} industry={industry} />
             ))}
           </div>
-        </div>
-
-        <div className="border border-border-subtle p-8 md:p-12 bg-surface-elevated">
-          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
-            Speaks your customers&apos; language
-          </h2>
-          <p className="font-body-md text-on-surface-variant max-w-3xl mb-8">
-            Natural, multilingual conversation means your callers are met in the language they actually think in — not
-            routed through a rigid, English-only phone tree. For clinics, firms, and shops serving diverse communities,
-            that is the difference between a booked appointment and a hang-up.
-          </p>
-          <ul className="flex flex-wrap gap-3 mb-10">
-            {LANGUAGES.map((language) => (
-              <li
-                key={language.name}
-                className="border border-border-subtle px-4 py-2 flex items-baseline gap-3 bg-background"
-              >
-                <span className="font-body-md text-primary">{language.name}</span>
-                {language.native && (
-                  <span className="font-label-mono text-label-mono text-[#DCCFC0]" lang={language.lang}>
-                    {language.native}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/contact"
-            className="bg-primary text-background px-10 py-4 font-bold text-body-md inline-block hover:opacity-80 transition-opacity"
-          >
-            Book a Demo
-          </Link>
         </div>
       </section>
     </main>
