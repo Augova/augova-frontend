@@ -163,8 +163,8 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
-          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
+            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-terminal-green text-[22px]">search</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
@@ -173,8 +173,8 @@ export default function Home() {
               need to step in.
             </p>
           </div>
-          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
+            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-terminal-green text-[22px]">menu_book</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
@@ -183,8 +183,8 @@ export default function Home() {
               escalation rules.
             </p>
           </div>
-          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
+            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-terminal-green text-[22px]">
                 integration_instructions
               </span>
@@ -194,8 +194,8 @@ export default function Home() {
               We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
             </p>
           </div>
-          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center mb-6">
+          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
+            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-terminal-green text-[22px]">phonelink_ring</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
@@ -204,7 +204,7 @@ export default function Home() {
               and edge cases.
             </p>
           </div>
-          <div className="border border-terminal-green p-6 flex flex-col bg-surface-elevated/40">
+          <div className="border border-terminal-green p-6 flex flex-col bg-[#1E2E38]">
             <div className="w-12 h-12 border border-terminal-green flex items-center justify-center bg-terminal-green/10 mb-6">
               <span className="material-symbols-outlined text-terminal-green text-[22px]">rocket_launch</span>
             </div>
