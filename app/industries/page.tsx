@@ -153,8 +153,7 @@ export default function IndustriesPage() {
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
             Every business below shares the same shape: the phone rings with high-intent customers at exactly the
-            moment your team cannot pick it up. Augova answers, qualifies, books, and hands off — in English, Mandarin,
-            Cantonese, Farsi, or Russian, whichever your caller is most comfortable speaking.
+            moment your team cannot pick it up. Augova answers, qualifies, books, and hands off — every time.
           </p>
         </div>
 

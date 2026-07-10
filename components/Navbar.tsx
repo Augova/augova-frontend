@@ -42,7 +42,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-4">
         <Link
-          href="/contact"
+          href="/book-demo"
           className="hidden md:inline-block bg-primary text-background px-6 py-2 font-bold text-body-md hover:opacity-80 transition-opacity"
         >
           Book Demo
@@ -57,7 +57,7 @@ export default function Navbar() {
         </button>
 
         <Link
-          href="/contact"
+          href="/book-demo"
           className="md:hidden bg-primary text-background px-4 py-2 font-bold text-body-md hover:opacity-80 transition-opacity"
         >
           Book Demo

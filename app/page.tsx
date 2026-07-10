@@ -57,7 +57,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-6 text-reveal" style={{ animationDelay: "0.2s" }}>
             <Link
-              href="/contact"
+              href="/book-demo"
               className="bg-primary text-background px-10 py-4 font-bold text-body-md border border-primary hover:bg-transparent hover:text-primary transition-all"
             >
               Book a Live Demo
@@ -316,7 +316,7 @@ export default function Home() {
             </h2>
             <div className="flex flex-col md:flex-row gap-6">
               <Link
-                href="/contact"
+                href="/book-demo"
                 className="bg-primary text-background px-10 py-6 font-bold text-body-lg hover:opacity-90 transition-opacity"
               >
                 Deploy My AI Assistant
