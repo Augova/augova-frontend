@@ -16,7 +16,7 @@ export default function Home() {
       <ScrollReveal />
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-20">
+      <section id="hero" className="relative min-h-screen flex flex-col justify-center px-margin-mobile md:px-margin-desktop overflow-hidden pt-20">
         <ShaderAnimation />
 
         <div className="relative z-10 max-w-4xl asymmetric-gutter">
@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Problem & Outcome Section */}
-      <section id="problem" className="py-section-gap px-margin-desktop bg-surface">
+      <section id="problem" className="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
           <div className="md:col-span-5">
             <h2 className="font-headline-lg text-headline-lg text-primary mb-8 leading-tight">
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-section-gap px-margin-desktop relative" id="how-it-works">
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop relative" id="how-it-works">
         <div className="mb-12">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">The Logic Gate</div>
           <h2 className="font-headline-lg text-headline-lg text-primary">From Call to Conversion</h2>
@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* Key Features */}
-      <section className="py-section-gap px-margin-desktop bg-surface-elevated" id="features">
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-elevated" id="features">
         <div className="text-center mb-12">
           <h2 className="font-headline-lg text-headline-lg text-primary">Engineered Performance</h2>
         </div>
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Multilingual Section */}
-      <section className="py-section-gap px-margin-desktop bg-[#C9996B] flex flex-col items-center text-center">
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop bg-[#C9996B] flex flex-col items-center text-center">
         <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-background mb-4">
           Speaks your customers&apos; language
         </h2>
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-section-gap px-margin-desktop" id="use-cases">
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop" id="use-cases">
         <div className="max-w-2xl mb-12">
           <span
             className="font-label-mono text-label-mono text-primary uppercase mb-4 inline-block"

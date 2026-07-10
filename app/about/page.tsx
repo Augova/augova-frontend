@@ -24,7 +24,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+      <section className="pb-section-gap px-margin-mobile md:px-margin-desktop border-t border-border-subtle pt-16">
         <div className="max-w-3xl">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Our mission</div>
           <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
@@ -38,7 +38,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+      <section className="pb-section-gap px-margin-mobile md:px-margin-desktop border-t border-border-subtle pt-16">
         <div className="max-w-3xl">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">How we work</div>
           <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">
@@ -53,7 +53,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="pb-section-gap px-margin-desktop border-t border-border-subtle pt-16">
+      <section className="pb-section-gap px-margin-mobile md:px-margin-desktop border-t border-border-subtle pt-16">
         <div className="max-w-3xl">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Where we&apos;re headed</div>
           <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4">

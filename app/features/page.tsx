@@ -4,7 +4,7 @@ import { DottedSurface } from "@/components/ui/dotted-surface";
 export default function FeaturesPage() {
   return (
     <main>
-      <section className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-24">
+      <section className="relative min-h-screen flex flex-col justify-center px-margin-mobile md:px-margin-desktop overflow-hidden pt-24">
         <DottedSurface />
         <div className="absolute inset-0 ascii-overlay z-0 font-label-mono text-[10px] leading-tight select-none overflow-hidden p-6">
           01010101 VOICE_AI_CATALOGUE // PACKAGING_AND_READINESS_LAYER
@@ -47,7 +47,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="pt-section-gap pb-12 px-margin-desktop bg-surface">
+      <section className="pt-section-gap pb-12 px-margin-mobile md:px-margin-desktop bg-surface">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
             <div className="font-label-mono text-label-mono mb-4" style={{ color: "#81A6C6" }}>
@@ -91,7 +91,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section id="catalog" className="pt-12 pb-section-gap px-margin-desktop">
+      <section id="catalog" className="pt-12 pb-section-gap px-margin-mobile md:px-margin-desktop">
         <div className="mb-12 max-w-3xl">
           <div className="font-label-mono text-label-mono uppercase mb-4" style={{ color: "#81A6C6" }}>
             Catalogue Snapshot

@@ -80,8 +80,8 @@
   --text-headline-lg--letter-spacing: -0.03em;
   --text-headline-lg--font-weight: 700;
 
-  --text-headline-display: 80px;
-  --text-headline-display--line-height: 88px;
+  --text-headline-display: clamp(2.5rem, 6vw + 1.5rem, 5rem);
+  --text-headline-display--line-height: 1.1;
   --text-headline-display--letter-spacing: -0.04em;
   --text-headline-display--font-weight: 700;
 
@@ -118,7 +118,7 @@ body {
 }
 
 .asymmetric-gutter {
-  padding-right: clamp(80px, 15vw, 400px);
+  padding-right: clamp(0px, 15vw, 400px);
 }
 
 .text-reveal {
