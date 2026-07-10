@@ -151,21 +151,21 @@ export default function Home() {
       </section>
 
       {/* Onboarding Process */}
-      <section className="py-section-gap px-margin-desktop bg-[#547792]" id="process">
+      <section className="py-section-gap px-margin-desktop bg-[#81A6C6]" id="process">
         <div className="mb-12 max-w-2xl">
-          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Process</div>
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
+          <div className="font-label-mono text-label-mono text-black uppercase mb-4">Process</div>
+          <h2 className="font-headline-lg text-headline-lg text-black mb-6">
             Launch your AI receptionist without rebuilding your business.
           </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant">
+          <p className="font-body-md text-body-md text-black/70">
             Augova is not just software you turn on and hope for the best. We set up the workflow, connect your
             systems, test real scenarios, and keep improving the receptionist after launch.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
-          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-terminal-green text-[22px]">search</span>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">search</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -173,9 +173,9 @@ export default function Home() {
               need to step in.
             </p>
           </div>
-          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-terminal-green text-[22px]">menu_book</span>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">menu_book</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -183,9 +183,9 @@ export default function Home() {
               escalation rules.
             </p>
           </div>
-          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-terminal-green text-[22px]">
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">
                 integration_instructions
               </span>
             </div>
@@ -194,9 +194,9 @@ export default function Home() {
               We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
             </p>
           </div>
-          <div className="border border-[#3A5164] bg-[#263642] p-6 flex flex-col hover:border-terminal-green/60 hover:bg-[#19242C] transition-colors">
-            <div className="w-12 h-12 border border-terminal-green/30 bg-[#19242C] flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-terminal-green text-[22px]">phonelink_ring</span>
+          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">phonelink_ring</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
@@ -204,9 +204,9 @@ export default function Home() {
               and edge cases.
             </p>
           </div>
-          <div className="border border-terminal-green p-6 flex flex-col bg-[#1E2E38]">
-            <div className="w-12 h-12 border border-terminal-green flex items-center justify-center bg-terminal-green/10 mb-6">
-              <span className="material-symbols-outlined text-terminal-green text-[22px]">rocket_launch</span>
+          <div className="border border-terminal-green bg-background p-6 flex flex-col">
+            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black text-[22px]">rocket_launch</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-3">Go Live &amp; Improve</h3>
             <p className="font-body-md text-on-surface-variant text-sm">
