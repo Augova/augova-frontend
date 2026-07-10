@@ -112,8 +112,11 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
           <div className="relative group">
-            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
-              01
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[48px] text-surface-container-highest group-hover:text-primary transition-colors">
+                01
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[28px] mb-2">call</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Caller Dials</h3>
             <p className="font-body-md text-on-surface-variant">
@@ -121,8 +124,11 @@ export default function Home() {
             </p>
           </div>
           <div className="relative group md:mt-24">
-            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
-              02
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[48px] text-surface-container-highest group-hover:text-primary transition-colors">
+                02
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[28px] mb-2">smart_toy</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">AI Pick Up</h3>
             <p className="font-body-md text-on-surface-variant">
@@ -130,8 +136,11 @@ export default function Home() {
             </p>
           </div>
           <div className="relative group">
-            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
-              03
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[48px] text-surface-container-highest group-hover:text-primary transition-colors">
+                03
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[28px] mb-2">checklist</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Smart Intake</h3>
             <p className="font-body-md text-on-surface-variant">
@@ -139,12 +148,97 @@ export default function Home() {
             </p>
           </div>
           <div className="relative group md:mt-24">
-            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
-              04
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[48px] text-surface-container-highest group-hover:text-primary transition-colors">
+                04
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[28px] mb-2">sync</span>
             </div>
             <h3 className="font-body-lg font-bold text-primary mb-4">Data Sync</h3>
             <p className="font-body-md text-on-surface-variant">
               Logs and results are instantly pushed to your CRM or internal dashboard via webhook.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Onboarding Process */}
+      <section className="py-section-gap px-margin-desktop bg-surface" id="process">
+        <div className="mb-12 max-w-2xl">
+          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Process</div>
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
+            Launch your AI receptionist without rebuilding your business.
+          </h2>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Augova is not just software you turn on and hope for the best. We set up the workflow, connect your
+            systems, test real scenarios, and keep improving the receptionist after launch.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
+          <div className="relative group">
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
+                01
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">search</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Call Workflow Audit</h3>
+            <p className="font-body-md text-on-surface-variant">
+              We learn how your calls work today: who calls, why they call, what your team asks, and when humans
+              need to step in.
+            </p>
+          </div>
+          <div className="relative group">
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
+                02
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">menu_book</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Knowledge Setup</h3>
+            <p className="font-body-md text-on-surface-variant">
+              We load your FAQs, services, pricing rules, hours, policies, locations, staff instructions, and
+              escalation rules.
+            </p>
+          </div>
+          <div className="relative group">
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
+                03
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">
+                integration_instructions
+              </span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">System Integration</h3>
+            <p className="font-body-md text-on-surface-variant">
+              We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
+            </p>
+          </div>
+          <div className="relative group">
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
+                04
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">phonelink_ring</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Test Calls &amp; Staging</h3>
+            <p className="font-body-md text-on-surface-variant">
+              We run realistic test calls before launch, including bookings, FAQs, urgent calls, confused callers,
+              and edge cases.
+            </p>
+          </div>
+          <div className="relative group">
+            <div className="flex items-end gap-3 mb-8">
+              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
+                05
+              </span>
+              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">rocket_launch</span>
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Go Live &amp; Improve</h3>
+            <p className="font-body-md text-on-surface-variant">
+              The AI starts answering real calls. We monitor performance, review outcomes, and refine scripts, rules,
+              and workflows.
             </p>
           </div>
         </div>
