@@ -1,7 +1,7 @@
 export default function ContactPage() {
   return (
-    <main className="pt-32">
-      <section className="py-section-gap px-margin-desktop max-w-2xl">
+    <main className="pt-20">
+      <section className="pt-10 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-2xl">
         <div className="mb-12">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Contact Us</div>
           <h1 className="font-headline-lg text-headline-lg text-primary mb-4">Book a demo.</h1>

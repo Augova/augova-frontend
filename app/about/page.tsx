@@ -1,8 +1,8 @@
 export default function AboutPage() {
   return (
-    <main className="pt-32">
-      <section className="py-section-gap px-margin-desktop">
-        <div className="max-w-3xl mb-section-gap">
+    <main className="pt-20">
+      <section className="pt-10 pb-section-gap px-margin-mobile md:px-margin-desktop">
+        <div className="max-w-3xl mb-12">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">About Us</div>
           <h1 className="font-headline-lg text-headline-lg text-primary mb-8">
             An assistant for your front desk, not a replacement for it.
@@ -36,7 +36,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-section-gap max-w-3xl">
+        <div className="mt-16 max-w-3xl">
           <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-6">
             Speaks your customers&apos; language
           </h2>

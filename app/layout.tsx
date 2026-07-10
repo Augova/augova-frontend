@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Augova | Your AI Receptionist",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="selection:bg-primary selection:text-background">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

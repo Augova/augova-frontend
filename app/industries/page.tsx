@@ -32,9 +32,9 @@ const INDUSTRIES = [
 
 export default function IndustriesPage() {
   return (
-    <main className="pt-32">
-      <section className="py-section-gap px-margin-desktop" id="industries">
-        <div className="mb-24">
+    <main className="pt-20">
+      <section className="pt-10 pb-section-gap px-margin-mobile md:px-margin-desktop" id="industries">
+        <div className="mb-12">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Industries</div>
           <h1 className="font-headline-lg text-headline-lg text-primary">Built for call-heavy businesses.</h1>
         </div>

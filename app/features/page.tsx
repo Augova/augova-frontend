@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         </div>
 
         <div className="relative z-10 max-w-5xl">
-          <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block" style={{ color: "#22C55E" }}>
+          <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block" style={{ color: "#659287" }}>
             Feature Catalogue // Voice AI
           </span>
           <h1 className="font-headline-display text-headline-display text-primary mb-8 leading-tight">
@@ -36,7 +36,7 @@ export default function FeaturesPage() {
             <a
               href="#catalog"
               className="border border-outline px-10 py-4 font-bold text-body-md hover:bg-surface-elevated transition-all flex items-center gap-2"
-              style={{ color: "#22C55E", borderColor: "#22C55E" }}
+              style={{ color: "#659287", borderColor: "#659287" }}
             >
               <span className="material-symbols-outlined">view_list</span>
               Explore the Catalogue
@@ -48,7 +48,7 @@ export default function FeaturesPage() {
       <section className="py-section-gap px-margin-desktop bg-surface">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Packaging Model
             </div>
             <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Four ways a feature can be framed.</h2>
@@ -69,7 +69,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Readiness Model
             </div>
             <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
@@ -90,8 +90,8 @@ export default function FeaturesPage() {
       </section>
 
       <section id="catalog" className="py-section-gap px-margin-desktop">
-        <div className="mb-16 max-w-3xl">
-          <div className="font-label-mono text-label-mono uppercase mb-4" style={{ color: "#22C55E" }}>
+        <div className="mb-12 max-w-3xl">
+          <div className="font-label-mono text-label-mono uppercase mb-4" style={{ color: "#659287" }}>
             Catalogue Snapshot
           </div>
           <h2 className="font-headline-lg text-headline-lg text-primary">
@@ -101,7 +101,7 @@ export default function FeaturesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Conversation Engine
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -113,7 +113,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Inbound Call Handling
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -125,7 +125,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Scheduling &amp; Workflow
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -137,7 +137,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Knowledge &amp; Personalization
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -149,7 +149,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Compliance &amp; Security
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -161,7 +161,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
               Integrations &amp; CRM
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
@@ -176,7 +176,7 @@ export default function FeaturesPage() {
 
       <section className="py-section-gap px-margin-desktop bg-surface-elevated">
         <div className="border border-border-subtle bg-surface-elevated/90 p-8 md:p-12">
-          <div className="font-label-mono text-label-mono mb-4" style={{ color: "#22C55E" }}>
+          <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
             Delivery Summary
           </div>
           <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
@@ -188,15 +188,6 @@ export default function FeaturesPage() {
           </p>
         </div>
       </section>
-
-      <footer className="px-margin-desktop py-12 border-t border-outline-variant">
-        <div className="flex flex-col md:flex-row justify-between gap-4 text-body-md text-on-surface-variant">
-          <div>Augova © 2026</div>
-          <Link href="/" className="text-primary hover:text-terminal-green transition-colors">
-            Return to the main homepage
-          </Link>
-        </div>
-      </footer>
     </main>
   );
 }
