@@ -18,7 +18,7 @@ export default function FeaturesPage() {
         </div>
 
         <div className="relative z-10 max-w-5xl">
-          <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block" style={{ color: "#659287" }}>
+          <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block" style={{ color: "#81A6C6" }}>
             Feature Catalogue // Voice AI
           </span>
           <h1 className="font-headline-display text-headline-display text-primary mb-8 leading-tight">
@@ -38,7 +38,7 @@ export default function FeaturesPage() {
             <a
               href="#catalog"
               className="border border-outline px-10 py-4 font-bold text-body-md hover:bg-surface-elevated transition-all flex items-center gap-2"
-              style={{ color: "#659287", borderColor: "#659287" }}
+              style={{ color: "#81A6C6", borderColor: "#81A6C6" }}
             >
               <span className="material-symbols-outlined">view_list</span>
               Explore the Catalogue
@@ -50,7 +50,7 @@ export default function FeaturesPage() {
       <section className="py-section-gap px-margin-desktop bg-surface">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#81A6C6" }}>
               Packaging Model
             </div>
             <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Four ways a feature can be framed.</h2>
@@ -71,7 +71,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
+            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#81A6C6" }}>
               Readiness Model
             </div>
             <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
@@ -93,7 +93,7 @@ export default function FeaturesPage() {
 
       <section id="catalog" className="py-section-gap px-margin-desktop">
         <div className="mb-12 max-w-3xl">
-          <div className="font-label-mono text-label-mono uppercase mb-4" style={{ color: "#659287" }}>
+          <div className="font-label-mono text-label-mono uppercase mb-4" style={{ color: "#81A6C6" }}>
             Catalogue Snapshot
           </div>
           <h2 className="font-headline-lg text-headline-lg text-primary">
@@ -103,8 +103,11 @@ export default function FeaturesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Conversation Engine
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                record_voice_over
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Conversation Engine</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• NLU and sub-700ms latency</li>
@@ -115,8 +118,11 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Inbound Call Handling
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                phone_in_talk
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Inbound Call Handling</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• 24/7 answering</li>
@@ -127,8 +133,11 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Scheduling &amp; Workflow
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                calendar_month
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Scheduling &amp; Workflow</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• Live booking on the call</li>
@@ -139,8 +148,11 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Knowledge &amp; Personalization
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                psychology
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Knowledge &amp; Personalization</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• RAG grounding and document upload</li>
@@ -151,8 +163,11 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Compliance &amp; Security
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                verified_user
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Compliance &amp; Security</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• PIPEDA baseline compliance</li>
@@ -163,8 +178,11 @@ export default function FeaturesPage() {
           </div>
 
           <div className="border border-border-subtle bg-surface-elevated/90 p-8">
-            <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
-              Integrations &amp; CRM
+            <div className="flex items-center gap-3 mb-6">
+              <span className="material-symbols-outlined text-[28px]" style={{ color: "#81A6C6" }}>
+                hub
+              </span>
+              <h3 className="font-body-lg font-bold text-2xl text-primary">Integrations &amp; CRM</h3>
             </div>
             <ul className="space-y-3 text-body-md text-on-surface-variant">
               <li>• Native CRM connectors</li>
@@ -176,76 +194,9 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Onboarding Process */}
-      <section className="py-section-gap px-margin-desktop bg-[#81A6C6]" id="process">
-        <div className="mb-12 max-w-2xl">
-          <div className="font-label-mono text-label-mono text-black uppercase mb-4">Process</div>
-          <h2 className="font-headline-lg text-headline-lg text-black mb-6">
-            Launch your AI receptionist without rebuilding your business.
-          </h2>
-          <p className="font-body-md text-body-md text-black/70">
-            Augova is not just software you turn on and hope for the best. We set up the workflow, connect your
-            systems, test real scenarios, and keep improving the receptionist after launch.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
-          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
-            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-black text-[22px]">search</span>
-            </div>
-            <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
-            <p className="font-body-md text-on-surface-variant text-sm">
-              We learn how your calls work today: who calls, why they call, what your team asks, and when humans
-              need to step in.
-            </p>
-          </div>
-          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
-            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-black text-[22px]">menu_book</span>
-            </div>
-            <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
-            <p className="font-body-md text-on-surface-variant text-sm">
-              We load your FAQs, services, pricing rules, hours, policies, locations, staff instructions, and
-              escalation rules.
-            </p>
-          </div>
-          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
-            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-black text-[22px]">
-                integration_instructions
-              </span>
-            </div>
-            <h3 className="font-body-lg font-bold text-primary mb-3">System Integration</h3>
-            <p className="font-body-md text-on-surface-variant text-sm">
-              We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
-            </p>
-          </div>
-          <div className="border border-black bg-background p-6 flex flex-col hover:bg-surface-elevated transition-colors">
-            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-black text-[22px]">phonelink_ring</span>
-            </div>
-            <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
-            <p className="font-body-md text-on-surface-variant text-sm">
-              We run realistic test calls before launch, including bookings, FAQs, urgent calls, confused callers,
-              and edge cases.
-            </p>
-          </div>
-          <div className="border border-terminal-green bg-background p-6 flex flex-col">
-            <div className="w-12 h-12 border border-black bg-white flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-black text-[22px]">rocket_launch</span>
-            </div>
-            <h3 className="font-body-lg font-bold text-primary mb-3">Go Live &amp; Improve</h3>
-            <p className="font-body-md text-on-surface-variant text-sm">
-              The AI starts answering real calls. We monitor performance, review outcomes, and refine scripts, rules,
-              and workflows.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="py-section-gap px-margin-desktop bg-surface-elevated">
         <div className="border border-border-subtle bg-surface-elevated/90 p-8 md:p-12">
-          <div className="font-label-mono text-label-mono mb-4" style={{ color: "#659287" }}>
+          <div className="font-label-mono text-label-mono mb-4" style={{ color: "#81A6C6" }}>
             Delivery Summary
           </div>
           <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
