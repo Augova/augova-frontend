@@ -175,68 +175,68 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter">
-          <div className="relative group">
-            <div className="flex items-end gap-3 mb-8">
-              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
-                01
-              </span>
-              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">search</span>
+          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
+                <span className="material-symbols-outlined text-terminal-green text-[22px]">search</span>
+              </div>
+              <span className="font-label-mono text-label-mono text-on-surface-variant">01</span>
             </div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Call Workflow Audit</h3>
-            <p className="font-body-md text-on-surface-variant">
+            <h3 className="font-body-lg font-bold text-primary mb-3">Call Workflow Audit</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
               We learn how your calls work today: who calls, why they call, what your team asks, and when humans
               need to step in.
             </p>
           </div>
-          <div className="relative group">
-            <div className="flex items-end gap-3 mb-8">
-              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
-                02
-              </span>
-              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">menu_book</span>
+          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
+                <span className="material-symbols-outlined text-terminal-green text-[22px]">menu_book</span>
+              </div>
+              <span className="font-label-mono text-label-mono text-on-surface-variant">02</span>
             </div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Knowledge Setup</h3>
-            <p className="font-body-md text-on-surface-variant">
+            <h3 className="font-body-lg font-bold text-primary mb-3">Knowledge Setup</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
               We load your FAQs, services, pricing rules, hours, policies, locations, staff instructions, and
               escalation rules.
             </p>
           </div>
-          <div className="relative group">
-            <div className="flex items-end gap-3 mb-8">
-              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
-                03
-              </span>
-              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">
-                integration_instructions
-              </span>
+          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
+                <span className="material-symbols-outlined text-terminal-green text-[22px]">
+                  integration_instructions
+                </span>
+              </div>
+              <span className="font-label-mono text-label-mono text-on-surface-variant">03</span>
             </div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">System Integration</h3>
-            <p className="font-body-md text-on-surface-variant">
+            <h3 className="font-body-lg font-bold text-primary mb-3">System Integration</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
               We connect the receptionist to your phone setup, calendar, CRM, SMS, email, and other required tools.
             </p>
           </div>
-          <div className="relative group">
-            <div className="flex items-end gap-3 mb-8">
-              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
-                04
-              </span>
-              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">phonelink_ring</span>
+          <div className="border border-border-subtle p-6 flex flex-col hover:border-terminal-green/60 transition-colors">
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 border border-terminal-green/30 flex items-center justify-center">
+                <span className="material-symbols-outlined text-terminal-green text-[22px]">phonelink_ring</span>
+              </div>
+              <span className="font-label-mono text-label-mono text-on-surface-variant">04</span>
             </div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Test Calls &amp; Staging</h3>
-            <p className="font-body-md text-on-surface-variant">
+            <h3 className="font-body-lg font-bold text-primary mb-3">Test Calls &amp; Staging</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
               We run realistic test calls before launch, including bookings, FAQs, urgent calls, confused callers,
               and edge cases.
             </p>
           </div>
-          <div className="relative group">
-            <div className="flex items-end gap-3 mb-8">
-              <span className="font-label-mono text-[40px] text-surface-container-highest group-hover:text-primary transition-colors">
-                05
-              </span>
-              <span className="material-symbols-outlined text-terminal-green text-[24px] mb-1">rocket_launch</span>
+          <div className="border border-terminal-green p-6 flex flex-col bg-surface-elevated/40">
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 border border-terminal-green flex items-center justify-center bg-terminal-green/10">
+                <span className="material-symbols-outlined text-terminal-green text-[22px]">rocket_launch</span>
+              </div>
+              <span className="font-label-mono text-label-mono text-terminal-green">05</span>
             </div>
-            <h3 className="font-body-lg font-bold text-primary mb-4">Go Live &amp; Improve</h3>
-            <p className="font-body-md text-on-surface-variant">
+            <h3 className="font-body-lg font-bold text-primary mb-3">Go Live &amp; Improve</h3>
+            <p className="font-body-md text-on-surface-variant text-sm">
               The AI starts answering real calls. We monitor performance, review outcomes, and refine scripts, rules,
               and workflows.
             </p>
