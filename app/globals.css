@@ -22,7 +22,7 @@
   --color-surface-container-highest: #353534;
   --color-surface-elevated: #18181B;
   --color-secondary-fixed: #e2e1eb;
-  --color-terminal-green: #22C55E;
+  --color-terminal-green: #659287;
   --color-surface: #131313;
   --color-primary-fixed-dim: #c6c6c7;
   --color-on-secondary-container: #b4b4bd;
@@ -60,7 +60,7 @@
   --spacing-margin-mobile: 24px;
   --spacing-grid-unit: 8px;
   --spacing-gutter: 32px;
-  --spacing-section-gap: 160px;
+  --spacing-section-gap: 64px;
   --spacing-margin-desktop: 80px;
 
   --font-headline-lg-mobile: "Geist", sans-serif;
@@ -121,24 +121,6 @@ body {
   mask-image: radial-gradient(circle, white 0%, transparent 80%);
   opacity: 0.08;
   pointer-events: none;
-}
-
-#torus-knot-stage {
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 45%), #050505;
-}
-
-#torus-knot-stage #app,
-#torus-knot-stage #app canvas,
-#torus-knot-stage #app .ascii-output {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#torus-knot-stage #app canvas,
-#torus-knot-stage #app .ascii-output {
-  display: block;
 }
 
 .asymmetric-gutter {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import TorusKnotHero from "@/components/TorusKnotHero";
+import { ShaderAnimation } from "@/components/ui/shader-animation";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-20">
-        <TorusKnotHero />
+        <ShaderAnimation />
 
         {/* Microtext Layer */}
         <div
@@ -33,7 +33,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl asymmetric-gutter">
           <span
             className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block opacity-100"
-            style={{ color: "#22C55E" }}
+            style={{ color: "#659287" }}
           >
             Artificial Intelligence // Voice Interface
           </span>
@@ -42,7 +42,7 @@ export default function Home() {
           </h1>
           <p
             className="font-body-lg text-body-lg mb-12 max-w-2xl text-reveal"
-            style={{ color: "#22C55E", animationDelay: "0.1s" }}
+            style={{ color: "#659287", animationDelay: "0.1s" }}
           >
             Eliminate missed revenue. Augova handles complex customer intake, appointments, and support queries with
             human-level natural speech, 24/7.
@@ -57,7 +57,7 @@ export default function Home() {
             <Link
               href="/features"
               className="border border-outline px-10 py-4 font-bold text-body-md hover:bg-surface-elevated transition-all flex items-center gap-2"
-              style={{ color: "#22C55E", borderColor: "#22C55E" }}
+              style={{ color: "#659287", borderColor: "#659287" }}
             >
               <span className="material-symbols-outlined">play_circle</span>
               Explore Features
@@ -98,7 +98,7 @@ export default function Home() {
 
       {/* How It Works */}
       <section className="py-section-gap px-margin-desktop relative" id="how-it-works">
-        <div className="mb-section-gap">
+        <div className="mb-12">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">The Logic Gate</div>
           <h2 className="font-headline-lg text-headline-lg text-primary">From Call to Conversion</h2>
         </div>
@@ -144,7 +144,7 @@ export default function Home() {
 
       {/* Key Features */}
       <section className="py-section-gap px-margin-desktop bg-surface-elevated" id="features">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12">
           <h2 className="font-headline-lg text-headline-lg text-primary">Engineered Performance</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-grid-unit">
@@ -195,11 +195,11 @@ export default function Home() {
 
       {/* Use Cases Section */}
       <section className="py-section-gap px-margin-desktop" id="use-cases">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
           <div className="max-w-2xl">
             <span
               className="font-label-mono text-label-mono text-primary uppercase mb-4 inline-block"
-              style={{ color: "#22C55E" }}
+              style={{ color: "#659287" }}
             >
               // USE CASES
             </span>
@@ -299,42 +299,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="w-full py-section-gap px-margin-desktop border-t border-outline-variant bg-surface flex flex-col md:flex-row justify-between items-start md:items-center gap-grid-unit">
-        <div className="flex flex-col gap-4">
-          <div className="font-headline-lg text-headline-lg text-primary">Augova</div>
-          <p className="font-label-mono text-label-mono text-on-surface-variant max-w-xs">
-            © 2024 Augova. Engineered for SMBs. All rights reserved.
-          </p>
-        </div>
-        <div className="flex flex-col md:flex-row gap-gutter font-label-mono text-label-mono">
-          <a
-            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
-            href="#"
-          >
-            Privacy Policy
-          </a>
-          <a
-            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
-            href="#"
-          >
-            Terms of Service
-          </a>
-          <a
-            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
-            href="#"
-          >
-            API Docs
-          </a>
-          <a
-            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
-            href="#"
-          >
-            System Status
-          </a>
-        </div>
-      </footer>
     </>
   );
 }
