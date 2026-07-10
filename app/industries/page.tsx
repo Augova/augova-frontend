@@ -76,6 +76,14 @@ const PRIMARY: Industry[] = [
   },
 ];
 
+const LANGUAGES = [
+  { name: "English", native: "", lang: "en" },
+  { name: "Mandarin", native: "普通话", lang: "zh-CN" },
+  { name: "Cantonese", native: "廣東話", lang: "zh-HK" },
+  { name: "Farsi", native: "فارسی", lang: "fa" },
+  { name: "Russian", native: "Русский", lang: "ru" },
+];
+
 const SECONDARY: Industry[] = [
   {
     icon: "gavel",
@@ -122,7 +130,7 @@ function IndustryCard({ industry, featured = false }: { industry: Industry; feat
       }`}
     >
       <span
-        className="material-symbols-outlined text-terminal-green mb-6 text-[32px] group-hover:text-primary transition-colors"
+        className="material-symbols-outlined text-[#DCCFC0] mb-6 text-[32px] group-hover:text-primary transition-colors"
         aria-hidden="true"
       >
         {industry.icon}
@@ -154,13 +162,13 @@ export default function IndustriesPage() {
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
             Every business below shares the same shape: the phone rings with high-intent customers at exactly the
-            moment your team cannot pick it up. Augova answers, qualifies, books, and hands off — in the language your
-            caller is most comfortable speaking.
+            moment your team cannot pick it up. Augova answers, qualifies, books, and hands off — in English, Mandarin,
+            Cantonese, Farsi, or Russian, whichever your caller is most comfortable speaking.
           </p>
         </div>
 
         <div className="mb-16">
-          <div className="font-label-mono text-label-mono text-terminal-green uppercase mb-6 border-t border-border-subtle pt-6">
+          <div className="font-label-mono text-label-mono text-[#DCCFC0] uppercase mb-6 border-t border-border-subtle pt-6">
             Where we focus first
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
@@ -171,7 +179,7 @@ export default function IndustriesPage() {
         </div>
 
         <div className="mb-16">
-          <div className="font-label-mono text-label-mono text-terminal-green uppercase mb-6 border-t border-border-subtle pt-6">
+          <div className="font-label-mono text-label-mono text-[#DCCFC0] uppercase mb-6 border-t border-border-subtle pt-6">
             Also a strong fit
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
@@ -190,6 +198,21 @@ export default function IndustriesPage() {
             routed through a rigid, English-only phone tree. For clinics, firms, and shops serving diverse communities,
             that is the difference between a booked appointment and a hang-up.
           </p>
+          <ul className="flex flex-wrap gap-3 mb-10">
+            {LANGUAGES.map((language) => (
+              <li
+                key={language.name}
+                className="border border-border-subtle px-4 py-2 flex items-baseline gap-3 bg-background"
+              >
+                <span className="font-body-md text-primary">{language.name}</span>
+                {language.native && (
+                  <span className="font-label-mono text-label-mono text-[#DCCFC0]" lang={language.lang}>
+                    {language.native}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
           <Link
             href="/contact"
             className="bg-primary text-background px-10 py-4 font-bold text-body-md inline-block hover:opacity-80 transition-opacity"
