@@ -1,65 +1,340 @@
-import Image from "next/image";
+import Link from "next/link";
+import TorusKnotHero from "@/components/TorusKnotHero";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <ScrollReveal />
+
+      {/* Hero Section */}
+      <section id="hero" className="relative min-h-screen flex flex-col justify-center px-margin-desktop overflow-hidden pt-20">
+        <TorusKnotHero />
+
+        {/* Microtext Layer */}
+        <div
+          className="absolute inset-0 ascii-texture z-0 font-label-mono text-[10px] leading-tight select-none overflow-hidden p-4"
+          style={{ color: "rgba(248, 243, 232, 0.72)" }}
+        >
+          01010101 01010101 01010101 AUGOVA_ENGINE_V2.0 // INITIALIZING_NEURAL_VOICE_LAYER... [OK]
+          <br />
+          CALL_LOGS: +1 555-0192 (SUCCESS), +1 555-0283 (SUCCESS), +1 555-0374 (SUCCESS)
+          <br />
+          LATENCY: 12ms // THROUGHPUT: 4.8k CALLS/SEC // VOX_GEN: STABLE
+          <br />
+          ......................................................................
+          <br />
+          SYSTEM_STATUS: NOMINAL_OPERATION // REGION: GLOBAL_EDGE_CLUSTER_04
+          <br />
+          01010101 01010101 01010101 AUGOVA_ENGINE_V2.0 // INITIALIZING_NEURAL_VOICE_LAYER... [OK]
+          <br />
+        </div>
+
+        <div className="relative z-10 max-w-4xl asymmetric-gutter">
+          <span
+            className="font-label-mono text-label-mono uppercase tracking-[0.2em] mb-6 block opacity-100"
+            style={{ color: "#22C55E" }}
+          >
+            Artificial Intelligence // Voice Interface
+          </span>
+          <h1 className="font-headline-display text-headline-display mb-8 text-reveal" style={{ color: "#fdfbf6" }}>
+            Your AI Receptionist That Never Misses a Call
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p
+            className="font-body-lg text-body-lg mb-12 max-w-2xl text-reveal"
+            style={{ color: "#22C55E", animationDelay: "0.1s" }}
+          >
+            Eliminate missed revenue. Augova handles complex customer intake, appointments, and support queries with
+            human-level natural speech, 24/7.
+          </p>
+          <div className="flex flex-wrap gap-6 text-reveal" style={{ animationDelay: "0.2s" }}>
+            <Link
+              href="/contact"
+              className="bg-primary text-background px-10 py-4 font-bold text-body-md border border-primary hover:bg-transparent hover:text-primary transition-all"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Book a Live Demo
+            </Link>
+            <Link
+              href="/features"
+              className="border border-outline px-10 py-4 font-bold text-body-md hover:bg-surface-elevated transition-all flex items-center gap-2"
+              style={{ color: "#22C55E", borderColor: "#22C55E" }}
             >
-              Learning
-            </a>{" "}
-            center.
+              <span className="material-symbols-outlined">play_circle</span>
+              Explore Features
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem & Outcome Section */}
+      <section id="problem" className="py-section-gap px-margin-desktop bg-surface">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div className="md:col-span-5">
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-8 leading-tight">
+              Missed Calls Are Missed Revenue
+            </h2>
+            <div className="font-label-mono text-label-mono text-outline-variant mb-4">SYSTEM_DIAGNOSTIC: 0x442</div>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              SMBs lose up to 30% of their annual revenue simply because they can&apos;t get to the phone. Human
+              receptionists are expensive and limited by time.
+            </p>
+          </div>
+          <div className="md:col-span-7 flex flex-col justify-center gap-grid-unit">
+            <div className="border-l-2 border-border-subtle pl-8 py-6 group hover:border-primary transition-colors">
+              <div className="font-label-mono text-label-mono text-terminal-green mb-1">IMPACT_LOSS</div>
+              <div className="font-headline-lg-mobile text-headline-lg-mobile text-primary">
+                62% of customers won&apos;t call back.
+              </div>
+            </div>
+            <div className="border-l-2 border-border-subtle pl-8 py-6 group hover:border-primary transition-colors">
+              <div className="font-label-mono text-label-mono text-terminal-green mb-1">EFFICIENCY_GAIN</div>
+              <div className="font-headline-lg-mobile text-headline-lg-mobile text-primary">
+                100% answer rate, instantly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-section-gap px-margin-desktop relative" id="how-it-works">
+        <div className="mb-section-gap">
+          <div className="font-label-mono text-label-mono text-primary uppercase mb-4">The Logic Gate</div>
+          <h2 className="font-headline-lg text-headline-lg text-primary">From Call to Conversion</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+          <div className="relative group">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              01
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Caller Dials</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Your existing business number is bridged to Augova&apos;s neural processing layer.
+            </p>
+          </div>
+          <div className="relative group md:mt-24">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              02
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">AI Pick Up</h3>
+            <p className="font-body-md text-on-surface-variant">
+              The AI answers within 10ms using a voice profile tailored to your brand identity.
+            </p>
+          </div>
+          <div className="relative group">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              03
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Smart Intake</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Natural conversation filters the lead, books the slot, or handles the support ticket.
+            </p>
+          </div>
+          <div className="relative group md:mt-24">
+            <div className="font-label-mono text-[48px] text-surface-container-highest mb-8 group-hover:text-primary transition-colors">
+              04
+            </div>
+            <h3 className="font-body-lg font-bold text-primary mb-4">Data Sync</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Logs and results are instantly pushed to your CRM or internal dashboard via webhook.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features */}
+      <section className="py-section-gap px-margin-desktop bg-surface-elevated" id="features">
+        <div className="text-center mb-24">
+          <h2 className="font-headline-lg text-headline-lg text-primary">Engineered Performance</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-grid-unit">
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">schedule</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">24/7/365 Coverage</h4>
+            <p className="font-body-md text-on-surface-variant">
+              Your business never sleeps. Holidays, weekends, and late nights are handled.
+            </p>
+          </div>
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">interpreter_mode</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">Neural Voice Synthesis</h4>
+            <p className="font-body-md text-on-surface-variant">
+              Ultra-low latency voices that eliminate the &quot;robotic&quot; feel of traditional IVR.
+            </p>
+          </div>
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">dataset</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">Smart Intake</h4>
+            <p className="font-body-md text-on-surface-variant">
+              Dynamically asks relevant questions based on customer responses.
+            </p>
+          </div>
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">sync</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">CRM Integration</h4>
+            <p className="font-body-md text-on-surface-variant">
+              Direct connections to HubSpot, Salesforce, and 3,000+ apps via Zapier.
+            </p>
+          </div>
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">analytics</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">Sentiment Analysis</h4>
+            <p className="font-body-md text-on-surface-variant">
+              Automatically tags urgent or frustrated callers for priority human follow-up.
+            </p>
+          </div>
+          <div className="border border-border-subtle p-8 hover:bg-background transition-colors group">
+            <span className="material-symbols-outlined text-primary mb-6 text-[32px]">security</span>
+            <h4 className="font-body-lg font-bold text-primary mb-2">Enterprise Security</h4>
+            <p className="font-body-md text-on-surface-variant">
+              SOC2 compliant data handling and encrypted transmission protocols.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="py-section-gap px-margin-desktop" id="use-cases">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+          <div className="max-w-2xl">
+            <span
+              className="font-label-mono text-label-mono text-primary uppercase mb-4 inline-block"
+              style={{ color: "#22C55E" }}
+            >
+              // USE CASES
+            </span>
+            <h2 className="font-headline-lg text-headline-lg text-primary">Tailored for Local Scale</h2>
+          </div>
+          <div className="font-label-mono text-on-surface-variant text-[10px] uppercase text-right leading-relaxed hidden md:block">
+            PROTOCOL_MATCH_01: CLINICAL_HEALTH
+            <br />
+            PROTOCOL_MATCH_02: CREATIVE_AGENCY
+            <br />
+            PROTOCOL_MATCH_03: SKILLED_TRADES
+            <br />
+            PROTOCOL_MATCH_04: LOCAL_RETAIL
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-border-subtle pt-12">
+          <div>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Clinics</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Automated appointment scheduling and patient intake without HIPAA violations.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Agencies</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Filter low-quality leads and book discovery calls while you focus on creative work.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Trades</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Plumbers, electricians, and contractors answer calls even when they are on a ladder.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-body-lg font-bold text-primary mb-6">Local Biz</h3>
+            <p className="font-body-md text-on-surface-variant">
+              Handling inventory questions and reservation requests during peak traffic hours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section className="py-section-gap px-margin-desktop bg-surface overflow-hidden">
+        <div className="relative">
+          <div className="absolute -left-20 top-0 opacity-10 font-headline-display select-none">&quot;</div>
+          <blockquote className="relative z-10 max-w-4xl mx-auto text-center">
+            <p className="font-headline-lg text-headline-lg italic text-primary mb-12">
+              &quot;Augova saved us $4,200 in monthly staffing costs while answering 100% of our after-hours
+              calls.&quot;
+            </p>
+            <cite className="font-label-mono text-label-mono text-on-surface-variant not-italic uppercase tracking-widest">
+              — Thomas Wright, Founder of Wright Plumbing
+            </cite>
+          </blockquote>
+        </div>
+        <div className="mt-24 flex flex-wrap justify-center items-center gap-16 grayscale opacity-30">
+          <div className="font-label-mono text-xl font-bold">LOGISTICS_CO</div>
+          <div className="font-label-mono text-xl font-bold">HEALTH_CORE</div>
+          <div className="font-label-mono text-xl font-bold">MODERN_LAW</div>
+          <div className="font-label-mono text-xl font-bold">SKY_REALTY</div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-section-gap px-margin-desktop border-t border-border-subtle" id="contact">
+        <div className="bg-surface-elevated p-12 md:p-24 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-8 font-label-mono text-[10px] opacity-20 text-right">
+            LAST_DEPLOYMENT: SUCCESS
+            <br />
+            BUILD: v2024.11.02
+            <br />
+            LOCATION: ASHBURN_VA
+          </div>
+          <div className="max-w-3xl">
+            <h2 className="font-headline-display text-headline-display text-primary mb-12 leading-[1.1]">
+              Ready to stop missing calls?
+            </h2>
+            <div className="flex flex-col md:flex-row gap-6">
+              <Link
+                href="/contact"
+                className="bg-primary text-background px-10 py-6 font-bold text-body-lg hover:opacity-90 transition-opacity"
+              >
+                Deploy My AI Assistant
+              </Link>
+              <Link
+                href="/contact"
+                className="border border-outline px-10 py-6 font-bold text-body-lg text-primary hover:bg-surface transition-all"
+              >
+                Talk to Sales
+              </Link>
+            </div>
+            <p className="mt-12 font-label-mono text-label-mono text-on-surface-variant">
+              No credit card required for the 7-day trial. Integration takes 5 minutes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="w-full py-section-gap px-margin-desktop border-t border-outline-variant bg-surface flex flex-col md:flex-row justify-between items-start md:items-center gap-grid-unit">
+        <div className="flex flex-col gap-4">
+          <div className="font-headline-lg text-headline-lg text-primary">Augova</div>
+          <p className="font-label-mono text-label-mono text-on-surface-variant max-w-xs">
+            © 2024 Augova. Engineered for SMBs. All rights reserved.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+        <div className="flex flex-col md:flex-row gap-gutter font-label-mono text-label-mono">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
+            href="#"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            Privacy Policy
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
+            href="#"
           >
-            Documentation
+            Terms of Service
+          </a>
+          <a
+            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
+            href="#"
+          >
+            API Docs
+          </a>
+          <a
+            className="text-on-surface-variant hover:text-primary underline transition-all focus:ring-1 focus:ring-primary p-1"
+            href="#"
+          >
+            System Status
           </a>
         </div>
-      </main>
-    </div>
+      </footer>
+    </>
   );
 }
