@@ -8,7 +8,21 @@ export const metadata: Metadata = {
 export default function BookDemoPage() {
   return (
     <main className="pt-20">
-      <section className="pt-10 pb-section-gap px-margin-mobile md:px-margin-desktop">
+      <section className="pt-10 px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <div className="relative max-w-4xl mx-auto text-center mb-16">
+          <div className="absolute -left-6 -top-10 opacity-10 font-headline-display select-none" aria-hidden="true">
+            &quot;
+          </div>
+          <p className="relative z-10 font-headline-lg text-headline-lg text-primary mb-4">
+            Missed Calls Are Missed Revenue
+          </p>
+          <p className="relative z-10 font-body-lg text-body-lg text-on-surface-variant">
+            Every unanswered call is a customer choosing whether to wait — or call someone else.
+          </p>
+        </div>
+      </section>
+
+      <section className="pb-section-gap px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
           <form className="flex flex-col gap-grid-unit">
             <input

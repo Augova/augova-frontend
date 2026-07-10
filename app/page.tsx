@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       {/* Onboarding Process */}
-      <section className="py-section-gap px-margin-desktop bg-surface" id="process">
+      <section className="py-section-gap px-margin-desktop bg-[#547792]" id="process">
         <div className="mb-12 max-w-2xl">
           <div className="font-label-mono text-label-mono text-primary uppercase mb-4">Process</div>
           <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
@@ -334,62 +334,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <section className="py-section-gap px-margin-desktop bg-surface overflow-hidden">
-        <div className="relative">
-          <div className="absolute -left-20 top-0 opacity-10 font-headline-display select-none">&quot;</div>
-          <blockquote className="relative z-10 max-w-4xl mx-auto text-center">
-            <p className="font-headline-lg text-headline-lg italic text-primary mb-12">
-              &quot;Augova saved us $4,200 in monthly staffing costs while answering 100% of our after-hours
-              calls.&quot;
-            </p>
-            <cite className="font-label-mono text-label-mono text-on-surface-variant not-italic uppercase tracking-widest">
-              — Thomas Wright, Founder of Wright Plumbing
-            </cite>
-          </blockquote>
-        </div>
-        <div className="mt-24 flex flex-wrap justify-center items-center gap-16 grayscale opacity-30">
-          <div className="font-label-mono text-xl font-bold">LOGISTICS_CO</div>
-          <div className="font-label-mono text-xl font-bold">HEALTH_CORE</div>
-          <div className="font-label-mono text-xl font-bold">MODERN_LAW</div>
-          <div className="font-label-mono text-xl font-bold">SKY_REALTY</div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-section-gap px-margin-desktop border-t border-border-subtle" id="contact">
-        <div className="bg-surface-elevated p-12 md:p-24 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 font-label-mono text-[10px] opacity-20 text-right">
-            LAST_DEPLOYMENT: SUCCESS
-            <br />
-            BUILD: v2024.11.02
-            <br />
-            LOCATION: ASHBURN_VA
-          </div>
-          <div className="max-w-3xl">
-            <h2 className="font-headline-display text-headline-display text-primary mb-12 leading-[1.1]">
-              Ready to stop missing calls?
-            </h2>
-            <div className="flex flex-col md:flex-row gap-6">
-              <Link
-                href="/book-demo"
-                className="bg-primary text-background px-10 py-6 font-bold text-body-lg hover:opacity-90 transition-opacity"
-              >
-                Deploy My AI Assistant
-              </Link>
-              <Link
-                href="/contact"
-                className="border border-outline px-10 py-6 font-bold text-body-lg text-primary hover:bg-surface transition-all"
-              >
-                Talk to Sales
-              </Link>
-            </div>
-            <p className="mt-12 font-label-mono text-label-mono text-on-surface-variant">
-              No credit card required for the 7-day trial. Integration takes 5 minutes.
-            </p>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
